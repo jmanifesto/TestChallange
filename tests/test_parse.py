@@ -68,3 +68,18 @@ def test_thinkpad_without_space_and_yoga_370():
     s = parse_specs('Lenovo ThinkPadX1 Yoga 4th | 14" | i5-8365U | 16 GB RAM | 256 GB SSD')
     assert s.model == "X1 Yoga Gen 4"
     assert parse_specs("Lenovo ThinkPad T14Gen2 i5-1145G7 16GB 256GB").model == "T14 Gen 2"
+
+
+def test_real_mydealz_descriptions():
+    # Echte Feed-Texte vom 2026-10-25, die vorher 512 GB RAM bzw. 32 GB ergaben
+    t = 'Lenovo Thinkpad T14 Gen 1: 14" FHD, Intel Core i5-10310U, 16GB RAM, 512GB M.2 SSD, TB3, Wi-Fi 6, Win11 Pro - Refurbished für 177€ (eBay)'
+    d = ("177€ - eBay ... Intel Core i5-10310U Prozessor, 4 Kerne / 8 Threads 16 GB DDR4 Arbeitsspeicher "
+         "512 GB M.2 NVMe SSD Intel UHD Graphics WLAN 6 (802.11ax)")
+    s = parse_specs(t, d)
+    assert (s.model, s.cpu, s.ram_gb, s.ssd_gb, s.screen_in) == ("T14 Gen 1", "i5-10310U", 16, 512, 14.0)
+
+    t = 'Lenovo ThinkPad L14 G2, 14" Laptop, ab 312€ - Intel i7 1165g7, 16-32GB RAM, LTE, 500GB M.2 SSD, 2x USB-C 1x TB4, LAN - refurbished, AfB-Shop'
+    d = ("343,20€ - AfB ... Falls ihr mehr RAM benötigt, dann könnt ihr zu der 32GB-Version greifen: 14,0 Zoll - "
+         "Intel Core i7 1165G7 @ 2,8 GHz - 32 GB DDR4 - 500 GB SSD ... RAM: 1x 16GB DDR4 2x SO-DIMM Slots")
+    s = parse_specs(t, d)
+    assert (s.model, s.cpu, s.ram_gb, s.ssd_gb) == ("L14 Gen 2", "i7-1165G7", 16, 500)

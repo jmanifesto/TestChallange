@@ -42,12 +42,14 @@ sources:
       link: "a[data-test=productcard-link]"
       description: "h3 + div"
 
-  # 4) rebuy. Das Server-HTML enthaelt keine Produkte, die Liste kommt komplett per JavaScript
-  #    (Angular). Deshalb render: true; der Workflow installiert dann Playwright. Volltextsuche ist
-  #    unscharf, daher die Kategorie Notebooks > Lenovo.
+  # 4) rebuy. Geprueft am 2026-10-25 (gerendert per Playwright): die Notebook-Kategorie enthaelt
+  #    ausschliesslich Apple MacBooks (270 Stueck), /kaufen/notebooks/lenovo zeigt dieselbe Liste,
+  #    und die Suche "thinkpad" liefert 78 Treffer, davon Buecher und Zubehoer. rebuy fuehrt also
+  #    keine ThinkPads. Deshalb aus. Bei Bedarf render: true + enabled: true, der Workflow
+  #    installiert dann Playwright automatisch.
   - name: rebuy
     kind: shop
-    enabled: true
+    enabled: false
     render: true
     urls:
       - "https://www.rebuy.de/kaufen/notebooks/lenovo?page={page}"

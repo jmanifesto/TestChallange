@@ -69,6 +69,7 @@ _CPU_RE = re.compile(
 )
 _RAM_RE = re.compile(r"\b(\d{1,3})\s*GB\s*(?:(?:LP)?DDR\d?\w*|RAM|Arbeitsspeicher|Memory)", re.I)
 _RAM_BARE_RE = re.compile(r"\b(\d{1,3})\s*RAM\b", re.I)          # "8 RAM, 128 SSD"
+_RAM_RANGE_RE = re.compile(r"\b(\d{1,3})\s*(?:-|bis)\s*(\d{1,3})\s*GB\s*(?:RAM|DDR|Arbeitsspeicher)", re.I)  # "16-32GB RAM" -> 16
 # refurbed/rebuy-Schreibweise: "Arbeitsspeicher Größe 16.0 GB", "Speicherplatz 512 GB" / "1 TB"
 _RAM_LABEL_RE = re.compile(r"Arbeitsspeicher(?:\s*Gr[öo]ß?e)?\s*:?\s*(\d{1,3})(?:[.,]0)?\s*GB", re.I)
 _SSD_LABEL_RE = re.compile(r"(?:Speicherplatz|Festplatte|Speicher)\s*(?:Größe)?\s*:?\s*(?:(\d{3,4})\s*GB|(\d)(?:[.,]0)?\s*TB)", re.I)
@@ -123,7 +124,7 @@ def parse_specs(title: str, description: str = "") -> Specs:
             s.cpu = f"Core Ultra {m.group(6)} {m.group(7).upper()}"
 
     # RAM: Kandidaten in Prioritaet, erster plausibler Wert gewinnt
-    ram_cands = []
+    ram_cands = [int(m.group(1)) for m in _RAM_RANGE_RE.finditer(text)]  # Untergrenze = Deal-Preis
     for pat in (_RAM_LABEL_RE, _RAM_RE, _RAM_BARE_RE):
         ram_cands += [int(m.group(1)) for m in pat.finditer(text)]
     m = _RAM_SLASH_RE.search(text)
