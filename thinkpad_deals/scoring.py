@@ -15,6 +15,7 @@ import yaml
 from .models import Listing, Specs
 
 _DEFAULT_CPU_FILE = Path(__file__).resolve().parent.parent / "config" / "cpu_scores.yaml"
+_DEFAULT_PROFILE_FILE = Path(__file__).resolve().parent.parent / "config" / "profiles.yaml"
 
 # Gewichte: ein "Leistungspunkt" entspricht grob 1000 PassMark-Punkten.
 W_CPU = 1.0        # pro 1000 PassMark
@@ -109,3 +110,54 @@ def deal_label(listing: Listing) -> str:
         elif ratio >= 1.2:
             tags.append("teurer als ueblich")
     return ", ".join(tags)
+
+
+# --- Suchprofile -------------------------------------------------------------
+
+def load_profiles(path: Optional[Path] = None) -> dict[str, dict]:
+    p = Path(path) if path else _DEFAULT_PROFILE_FILE
+    if not p.exists():
+        return {}
+    return yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+
+
+def _cpu_class(cpu: Optional[str]) -> Optional[str]:
+    if not cpu:
+        return None
+    c = cpu.lower()
+    for cls in ("core ultra 9", "core ultra 7", "core ultra 5", "ryzen 9", "ryzen 7", "ryzen 5", "ryzen 3"):
+        if c.startswith(cls):
+            return cls
+    return c.split("-")[0] if c[:2] in ("i3", "i5", "i7", "i9") else None
+
+
+def profile_misses(listing: Listing, profile: dict, now=None) -> list[str]:
+    """Liste der Gruende, warum ein Angebot NICHT zum Profil passt. Leer = Treffer."""
+    from datetime import datetime, timedelta, timezone
+    s = listing.specs
+    miss: list[str] = []
+    if profile.get("min_ram_gb") and (s.ram_gb or 0) < profile["min_ram_gb"]:
+        miss.append(f"RAM {s.ram_gb or '?'} < {profile['min_ram_gb']} GB")
+    if profile.get("min_ssd_gb") and (s.ssd_gb or 0) < profile["min_ssd_gb"]:
+        miss.append(f"SSD {s.ssd_gb or '?'} < {profile['min_ssd_gb']} GB")
+    min_cpu = profile.get("min_cpu_score")
+    if min_cpu:
+        if listing.cpu_score is not None:
+            if listing.cpu_score < min_cpu:
+                miss.append(f"CPU {s.cpu} ({listing.cpu_score}) < {min_cpu}")
+        else:
+            cls = _cpu_class(s.cpu)
+            classes = [c.lower() for c in profile.get("cpu_classes") or []]
+            if not cls or cls not in classes:
+                miss.append(f"CPU {s.cpu or '?'} unbekannt und nicht in {profile.get('cpu_classes')}")
+    if profile.get("max_price") and listing.price is not None and listing.price > profile["max_price"]:
+        miss.append(f"Preis {listing.price:.0f} > {profile['max_price']} €")
+    if listing.price is None:
+        miss.append("kein Preis")
+    age = profile.get("max_age_days")
+    if age:
+        now = now or datetime.now(timezone.utc)
+        seen = listing.seen_at if listing.seen_at.tzinfo else listing.seen_at.replace(tzinfo=timezone.utc)
+        if now - seen > timedelta(days=age):
+            miss.append(f"aelter als {age} Tage")
+    return miss

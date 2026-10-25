@@ -33,7 +33,7 @@ jobs:
 
       - name: Scan
         run: |
-          thinkpad-deals scan --limit 50 \
+          thinkpad-deals scan --limit 50 --profile "${PROFILE:-dev}" \
             --notify-file data/notify.txt --notify-min-score "${NOTIFY_MIN_SCORE:-4.5}" \
             --report data/report.md | tee scan.log
           {
@@ -44,6 +44,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
         env:
           NOTIFY_MIN_SCORE: ${{ vars.NOTIFY_MIN_SCORE }}
+          PROFILE: ${{ vars.PROFILE }}
 
       # Push-Benachrichtigung aufs Handy per ntfy-App. Topic kommt aus der
       # Repository-Variable NTFY_TOPIC, sonst aus dem Fallback hier.

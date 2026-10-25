@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS observations (
     condition TEXT, grade TEXT, touch INTEGER,
     cpu_score INTEGER, value_score REAL, baseline_price REAL,
     config_key TEXT,
+    published TEXT,
     UNIQUE(source, url)
 );
 CREATE TABLE IF NOT EXISTS price_history (
@@ -45,6 +46,12 @@ class Store:
         self.conn = sqlite3.connect(str(self.path))
         self.conn.row_factory = sqlite3.Row
         self.conn.executescript(SCHEMA)
+        # Migration fuer Datenbanken aus Version 0.1 ohne published-Spalte
+        cols = {r[1] for r in self.conn.execute("PRAGMA table_info(observations)")}
+        if "published" not in cols:
+            self.conn.execute("ALTER TABLE observations ADD COLUMN published TEXT")
+            self.conn.execute("UPDATE observations SET published = first_seen")
+            self.conn.commit()
 
     def close(self) -> None:
         self.conn.close()
@@ -58,10 +65,14 @@ class Store:
         return [r["price"] for r in rows]
 
     def upsert(self, listing: Listing) -> bool:
-        """Speichert das Angebot. Liefert True, wenn es neu war."""
-        now = listing.seen_at.isoformat()
+        """Speichert das Angebot. Liefert True, wenn es neu war.
+
+        first_seen/last_seen sind Scan-Zeitpunkte, published ist das Datum aus der
+        Quelle (bei RSS der Post, bei Shops der Scan-Zeitpunkt).
+        """
+        now = datetime.now(timezone.utc).isoformat()
+        published = listing.seen_at.isoformat()
         key = config_key(listing.specs)
-        row = listing.to_row()
         existing = self.conn.execute(
             "SELECT id, price FROM observations WHERE source=? AND url=?", (listing.source, listing.url)
         ).fetchone()
@@ -70,10 +81,10 @@ class Store:
             self.conn.execute(
                 """UPDATE observations SET title=?, price=?, last_seen=?, model=?, cpu=?, ram_gb=?, ssd_gb=?,
                    screen_in=?, condition=?, grade=?, touch=?, cpu_score=?, value_score=?, baseline_price=?,
-                   config_key=? WHERE id=?""",
+                   config_key=?, published=? WHERE id=?""",
                 (listing.title, listing.price, now, s.model, s.cpu, s.ram_gb, s.ssd_gb, s.screen_in,
                  s.condition, s.grade, int(s.touch), listing.cpu_score, listing.value_score,
-                 listing.baseline_price, key, existing["id"]),
+                 listing.baseline_price, key, published, existing["id"]),
             )
             if existing["price"] != listing.price:
                 self.conn.execute(
@@ -84,11 +95,11 @@ class Store:
             return False
         self.conn.execute(
             """INSERT INTO observations(source,url,title,price,currency,first_seen,last_seen,model,cpu,ram_gb,
-               ssd_gb,screen_in,condition,grade,touch,cpu_score,value_score,baseline_price,config_key)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+               ssd_gb,screen_in,condition,grade,touch,cpu_score,value_score,baseline_price,config_key,published)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (listing.source, listing.url, listing.title, listing.price, listing.currency, now, now,
              s.model, s.cpu, s.ram_gb, s.ssd_gb, s.screen_in, s.condition, s.grade, int(s.touch),
-             listing.cpu_score, listing.value_score, listing.baseline_price, key),
+             listing.cpu_score, listing.value_score, listing.baseline_price, key, published),
         )
         self.conn.execute(
             "INSERT INTO price_history(source,url,price,seen_at) VALUES (?,?,?,?)",
@@ -98,9 +109,16 @@ class Store:
         return True
 
     def top(self, limit: int = 20, max_price: Optional[float] = None, min_cpu: int = 0,
-            min_ram: int = 0, days: Optional[int] = None) -> list[sqlite3.Row]:
+            min_ram: int = 0, days: Optional[int] = None, min_ssd: int = 0,
+            published_days: Optional[int] = None) -> list[sqlite3.Row]:
         q = "SELECT * FROM observations WHERE value_score IS NOT NULL"
         args: list = []
+        if min_ssd:
+            q += " AND ssd_gb >= ?"
+            args.append(min_ssd)
+        if published_days:
+            q += " AND COALESCE(published, first_seen) >= datetime('now', ?)"
+            args.append(f"-{int(published_days)} days")
         if max_price is not None:
             q += " AND price <= ?"
             args.append(max_price)

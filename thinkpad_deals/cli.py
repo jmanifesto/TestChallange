@@ -16,7 +16,8 @@ import yaml
 
 from .http import Fetcher
 from .models import Listing
-from .scoring import baseline_price, config_key, deal_label, load_cpu_scores, value_score
+from .scoring import (baseline_price, config_key, deal_label, load_cpu_scores, load_profiles,
+                      profile_misses, value_score)
 from .sources import build_sources
 from .store import Store
 
@@ -53,9 +54,19 @@ def fmt_row(l) -> str:
     )
 
 
+def get_profile(args) -> dict | None:
+    if not args.profile:
+        return None
+    profiles = load_profiles(args.profiles)
+    if args.profile not in profiles:
+        raise SystemExit(f"Profil {args.profile!r} nicht in config/profiles.yaml. Vorhanden: {', '.join(profiles)}")
+    return profiles[args.profile]
+
+
 def cmd_scan(args) -> int:
     cfg = load_config(args.config)
     cpu_table = load_cpu_scores(args.cpu_scores)
+    profile = get_profile(args)
     store = Store(args.db)
     fetcher = Fetcher(delay_s=cfg.get("delay_s", 2.0), cache_ttl_s=cfg.get("cache_ttl_s", 1800))
     sources = build_sources(cfg, only=args.source)
@@ -78,16 +89,25 @@ def cmd_scan(args) -> int:
     print("   Preis    | Pkt/100€ | Modell / CPU / RAM/SSD                 | Quelle     | Link")
     for l in new[: args.limit]:
         print(fmt_row(l))
+    if profile:
+        matches = [l for l in new if not profile_misses(l, profile)]
+        print(f"\nProfil '{args.profile}': {len(matches)} neue Treffer")
+        for l in matches:
+            print(fmt_row(l))
     if args.notify_file:
-        hits = [l for l in new if (l.value_score or 0) >= args.notify_min_score]
+        if profile:
+            hits = [l for l in new if not profile_misses(l, profile)]
+        else:
+            hits = [l for l in new if (l.value_score or 0) >= args.notify_min_score]
         Path(args.notify_file).parent.mkdir(parents=True, exist_ok=True)
         Path(args.notify_file).write_text(
             "".join(f"{l.price:.0f} € | {l.specs.model} {l.specs.cpu} {l.specs.ram_gb}GB/{l.specs.ssd_gb}GB "
                     f"| {l.value_score} Pkt | {deal_label(l)} | {l.url}\n" for l in hits),
             encoding="utf-8")
-        print(f"\n{len(hits)} neue Angebote ueber {args.notify_min_score} Punkten -> {args.notify_file}")
+        crit = f"zum Profil '{args.profile}'" if profile else f"ueber {args.notify_min_score} Punkten"
+        print(f"\n{len(hits)} neue Angebote {crit} -> {args.notify_file}")
     if args.report:
-        write_report(store, Path(args.report), new)
+        write_report(store, Path(args.report), new, profile=profile, profile_name=args.profile)
     return 0
 
 
@@ -104,10 +124,23 @@ def markdown_table(rows) -> str:
     return "\n".join(out)
 
 
-def write_report(store: Store, path: Path, new: list[Listing] | None = None, limit: int = 25) -> None:
+def profile_rows(store: Store, profile: dict, limit: int = 25):
+    """Historie nach Profil filtern (Preis, RAM, SSD, CPU, Alter)."""
+    rows = store.top(limit=500, max_price=profile.get("max_price"), min_ram=profile.get("min_ram_gb", 0),
+                     min_ssd=profile.get("min_ssd_gb", 0), published_days=profile.get("max_age_days"))
+    min_cpu = profile.get("min_cpu_score", 0)
+    return [r for r in rows if (r["cpu_score"] or 0) >= min_cpu][:limit]
+
+
+def write_report(store: Store, path: Path, new: list[Listing] | None = None, limit: int = 25,
+                 profile: dict | None = None, profile_name: str | None = None) -> None:
     from datetime import datetime, timezone
     parts = [f"# ThinkPad-Deals Report\n\nStand: {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC, "
              f"{store.count()} Angebote in der Historie.\n"]
+    if profile:
+        rows = profile_rows(store, profile, limit)
+        parts.append(f"## Profil '{profile_name}' ({len(rows)} aktuelle Treffer)\n\n"
+                     f"{profile.get('description', '').strip()}\n\n" + markdown_table(rows) + "\n")
     if new:
         parts.append(f"## Neu in diesem Lauf ({len(new)})\n\n" + markdown_table(new[:limit]) + "\n")
     parts.append("## Beste Preis-Leistung (letzte 14 Tage)\n\n" + markdown_table(store.top(limit=limit, days=14)) + "\n")
@@ -118,8 +151,12 @@ def write_report(store: Store, path: Path, new: list[Listing] | None = None, lim
 
 def cmd_top(args) -> int:
     store = Store(args.db)
-    rows = store.top(limit=args.limit, max_price=args.max_price, min_cpu=args.min_cpu,
-                     min_ram=args.min_ram, days=args.days)
+    profile = get_profile(args)
+    if profile:
+        rows = profile_rows(store, profile, args.limit)
+    else:
+        rows = store.top(limit=args.limit, max_price=args.max_price, min_cpu=args.min_cpu,
+                         min_ram=args.min_ram, days=args.days)
     if args.markdown:
         print(markdown_table(rows))
         return 0
@@ -167,6 +204,8 @@ def main(argv=None) -> int:
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     p.add_argument("--db", default="data/deals.db")
     p.add_argument("--cpu-scores", type=Path, default=None)
+    p.add_argument("--profiles", type=Path, default=None, help="Pfad zu profiles.yaml")
+    p.add_argument("--profile", help="Suchprofil aus config/profiles.yaml, z.B. dev")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     s = sub.add_parser("scan", help="Quellen abfragen und bewerten")

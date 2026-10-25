@@ -1,18 +1,22 @@
-# Hilfswerkzeug: eine Shop-Seite vom Runner aus laden, Selektoren vorschlagen,
-# rohes HTML als Artefakt ablegen. Damit lassen sich neue Quellen anbinden,
-# ohne dass ein eigener Rechner die Seite aufrufen muss.
+# Hilfswerkzeug: Shop-Seiten vom Runner aus laden, Selektoren vorschlagen und
+# das rohe HTML in den Branch `probe-data` committen (nicht in main). Damit
+# lassen sich neue Quellen anbinden, ohne dass ein eigener Rechner die Seite
+# aufrufen muss. Der Branch wird bei jedem Lauf neu aufgesetzt.
 name: probe-page
 
 on:
   workflow_dispatch:
     inputs:
-      url:
-        description: "Listen-URL des Shops"
+      urls:
+        description: "Eine oder mehrere Listen-URLs, durch Leerzeichen getrennt"
         required: true
       render:
         description: "per Playwright rendern (JS-Shops)"
         type: boolean
         default: false
+
+permissions:
+  contents: write
 
 jobs:
   probe:
@@ -32,29 +36,34 @@ jobs:
         run: |
           mkdir -p probe
           python - <<'PY'
-          import os, sys
+          import os, re, sys, subprocess
+          from urllib.parse import urlparse
           from thinkpad_deals.http import Fetcher
-          url = os.environ["URL"]; render = os.environ["RENDER"] == "true"
-          f = Fetcher(cache_dir=None)
-          try:
-              html = f.get(url, render=render, check_robots=False)
-          except Exception as e:
-              html = f"<!-- FETCH FAILED: {e!r} -->"
-              print("FETCH FAILED:", e, file=sys.stderr)
-          open("probe/page.html", "w", encoding="utf-8").write(html)
-          print(f"{len(html)} Zeichen geladen")
+          render = os.environ["RENDER"] == "true"
+          f = Fetcher(cache_dir=None, delay_s=3)
+          for url in os.environ["URLS"].split():
+              slug = re.sub(r"[^a-z0-9]+", "-", (urlparse(url).netloc + urlparse(url).path).lower()).strip("-")[:80]
+              try:
+                  html = f.get(url, render=render, check_robots=False)
+                  status = f"{len(html)} Zeichen"
+              except Exception as e:
+                  html = f"<!-- FETCH FAILED: {e!r} -->"
+                  status = f"FEHLER {e!r}"
+              open(f"probe/{slug}.html", "w", encoding="utf-8").write(html)
+              cal = subprocess.run(["thinkpad-deals", "calibrate", f"probe/{slug}.html"], capture_output=True, text=True)
+              open(f"probe/{slug}.calibrate.txt", "w", encoding="utf-8").write(f"URL: {url}\n{status}\n\n{cal.stdout}{cal.stderr}")
+              print(f"{url} -> {status}")
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as s:
+                  s.write(f"## {url}\n{status}\n\n```\n{cal.stdout[:3000]}\n```\n")
           PY
-          {
-            echo "## Probe: $URL"
-            echo '```'
-            thinkpad-deals calibrate probe/page.html || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
         env:
-          URL: ${{ inputs.url }}
+          URLS: ${{ inputs.urls }}
           RENDER: ${{ inputs.render }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: probe-page
-          path: probe/page.html
-          retention-days: 3
+      - name: Commit to probe-data branch
+        run: |
+          git config user.name "thinkpad-deals bot"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout --orphan probe-data
+          git rm -rfq --cached . && git add -f probe/
+          git commit -qm "probe: $(date -u '+%Y-%m-%d %H:%M') UTC"
+          git push -f origin probe-data

@@ -1,0 +1,26 @@
+# Suchprofile: welche Angebote ueberhaupt als Treffer zaehlen.
+# `thinkpad-deals scan --profile dev` / `top --profile dev`, im Workflow ueber die Variable PROFILE.
+dev:
+  description: >
+    Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs.
+    Mindestens 32 GB RAM, i7-Klasse oder staerker, grosse SSD.
+  min_ram_gb: 32
+  min_ssd_gb: 512
+  # i7-1165G7 liegt bei ~10500, i7-1260P bei ~17000, Ryzen 7 PRO 5850U bei ~18500.
+  # 12000 schliesst die 8.-10. Generation (i7-8650U, i7-10610U) aus, die mit
+  # 4 Kernen fuer Docker + IDE + Agenten zu schwach sind.
+  min_cpu_score: 12000
+  # Faellt die CPU nicht in der Tabelle, zaehlt die Klasse:
+  cpu_classes: ["i7", "i9", "Ryzen 7", "Ryzen 9", "Core Ultra 7", "Core Ultra 9"]
+  max_price: 1000
+  # Nur Angebote, die in den letzten N Tagen veroeffentlicht oder gesehen wurden.
+  max_age_days: 14
+
+office:
+  description: Einfacher Buero-/Surf-Laptop, so wie der T580-Deal.
+  min_ram_gb: 16
+  min_ssd_gb: 256
+  min_cpu_score: 5500
+  cpu_classes: []
+  max_price: 300
+  max_age_days: 14
