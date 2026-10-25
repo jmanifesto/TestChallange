@@ -75,11 +75,27 @@ drei Preise bekannt sind, wird der Median als Referenz genutzt. Liegt ein Angebo
 darunter, bekommt es das Etikett `-xx% vs. Median`. Das ist genau der Effekt, den der Gutschein im
 T580-Deal hatte: 229 € Listenpreis, 179 € mit Code.
 
-Ein Cronjob alle paar Stunden reicht, dann baut sich die Referenz von selbst auf:
+## Ohne eigenen Rechner laufen lassen
 
-```
-0 */3 * * *  cd /pfad/thinkpad-deals && .venv/bin/thinkpad-deals scan >> scan.log 2>&1
-```
+`.github/workflows/scan.yml` macht das Repo selbst zum Server: GitHub Actions startet alle drei
+Stunden einen Scan, committet `data/deals.db` (Historie) und `data/report.md` (lesbarer Report mit
+Top-Listen) zurück ins Repo und zeigt die Ausgabe unter Actions als Zusammenfassung. Kosten: null
+bei öffentlichem Repo, bei privatem gut innerhalb der 2000 Freiminuten pro Monat.
+
+Einrichten:
+
+1. Repo auf GitHub, Branch mit diesem Code. Unter Settings > Actions > General
+   "Read and write permissions" für `GITHUB_TOKEN` erlauben.
+2. Unter Actions den Workflow `scan-deals` einmal per "Run workflow" starten.
+3. **Push aufs Handy** (optional, 2 Minuten): App [ntfy](https://ntfy.sh) installieren, ein
+   Topic mit zufälligem Namen abonnieren (z.B. `tp-deals-k3x9q2`), diesen Namen als
+   Repository-Variable `NTFY_TOPIC` unter Settings > Secrets and variables > Actions > Variables
+   anlegen. Ab dann meldet sich das Handy, sobald ein neues Angebot über 4,5 Punkten auftaucht.
+   Schwelle über die Variable `NOTIFY_MIN_SCORE` ändern.
+
+Alternativ kann eine Claude-Cloud-Session dasselbe als geplante Aufgabe ausführen und dir die
+Treffer kommentieren. Dafür muss die Umgebung die Shop-Domains im Netzwerk erlauben und das Repo
+erreichen können. Für reines Sammeln ist Actions die robustere und billigere Variante.
 
 ## Quellen, die sich lohnen
 

@@ -45,15 +45,25 @@ sources:
     selectors: {item: "div.product-box", title: "a.product-name", price: "span.product-price", link: "a.product-name"}
 """, encoding="utf-8")
     db = tmp_path / "deals.db"
-    rc = main(["--config", str(cfg), "--db", str(db), "scan"])
+    notify = tmp_path / "notify.txt"
+    report = tmp_path / "report.md"
+    rc = main(["--config", str(cfg), "--db", str(db), "scan", "--notify-file", str(notify),
+               "--notify-min-score", "4.4", "--report", str(report)])
     out = capsys.readouterr().out
     assert rc == 0
     assert "8 Angebote gesehen, 8 neu" in out
     # Preis-Leistung sortiert: T14 Gen 2 (399) und T580 (179) ganz oben, L13 fuer 1099 ganz unten
     lines = out.splitlines()[3:]
     assert "T14 Gen 2" in lines[0] and "179.00" in lines[1] and "T580" in lines[1]
-    assert "1099.00" in lines[-1]
+    assert "1099.00" in lines[-3]
+    hits = notify.read_text(encoding="utf-8").splitlines()
+    assert len(hits) == 2 and "T580" in hits[1] and "mydealz.de" in hits[1]
+    md = report.read_text(encoding="utf-8")
+    assert "## Neu in diesem Lauf (8)" in md and "| 179 € |" in md and "## Bis 250 € mit 16 GB" in md
 
     rc = main(["--config", str(cfg), "--db", str(db), "top", "--max-price", "200"])
     out = capsys.readouterr().out
     assert rc == 0 and "T580" in out and "399.00" not in out
+    rc = main(["--config", str(cfg), "--db", str(db), "top", "--markdown", "--limit", "2"])
+    out = capsys.readouterr().out
+    assert rc == 0 and out.startswith("| Preis |") and out.count("[Link](") == 2

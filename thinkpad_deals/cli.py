@@ -78,13 +78,51 @@ def cmd_scan(args) -> int:
     print("   Preis    | Pkt/100€ | Modell / CPU / RAM/SSD                 | Quelle     | Link")
     for l in new[: args.limit]:
         print(fmt_row(l))
+    if args.notify_file:
+        hits = [l for l in new if (l.value_score or 0) >= args.notify_min_score]
+        Path(args.notify_file).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.notify_file).write_text(
+            "".join(f"{l.price:.0f} € | {l.specs.model} {l.specs.cpu} {l.specs.ram_gb}GB/{l.specs.ssd_gb}GB "
+                    f"| {l.value_score} Pkt | {deal_label(l)} | {l.url}\n" for l in hits),
+            encoding="utf-8")
+        print(f"\n{len(hits)} neue Angebote ueber {args.notify_min_score} Punkten -> {args.notify_file}")
+    if args.report:
+        write_report(store, Path(args.report), new)
     return 0
+
+
+def markdown_table(rows) -> str:
+    out = ["| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |", "|---:|---:|---|---|---|---|---|---|"]
+    for r in rows:
+        if isinstance(r, Listing):
+            s = r.specs
+            model, cpu, ram, ssd, scr, src, url, price, vs = s.model, s.cpu, s.ram_gb, s.ssd_gb, s.screen_in, r.source, r.url, r.price, r.value_score
+        else:
+            model, cpu, ram, ssd, scr, src, url, price, vs = r["model"], r["cpu"], r["ram_gb"], r["ssd_gb"], r["screen_in"], r["source"], r["url"], r["price"], r["value_score"]
+        out.append(f"| {price:.0f} € | {vs if vs is not None else '-'} | {model or '?'} | {cpu or '?'} | "
+                   f"{ram or '?'}/{ssd or '?'} GB | {scr or ''} | {src} | [Link]({url}) |")
+    return "\n".join(out)
+
+
+def write_report(store: Store, path: Path, new: list[Listing] | None = None, limit: int = 25) -> None:
+    from datetime import datetime, timezone
+    parts = [f"# ThinkPad-Deals Report\n\nStand: {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC, "
+             f"{store.count()} Angebote in der Historie.\n"]
+    if new:
+        parts.append(f"## Neu in diesem Lauf ({len(new)})\n\n" + markdown_table(new[:limit]) + "\n")
+    parts.append("## Beste Preis-Leistung (letzte 14 Tage)\n\n" + markdown_table(store.top(limit=limit, days=14)) + "\n")
+    parts.append("## Bis 250 € mit 16 GB\n\n" + markdown_table(store.top(limit=limit, max_price=250, min_ram=16, days=14)) + "\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(parts), encoding="utf-8")
 
 
 def cmd_top(args) -> int:
     store = Store(args.db)
     rows = store.top(limit=args.limit, max_price=args.max_price, min_cpu=args.min_cpu,
                      min_ram=args.min_ram, days=args.days)
+    if args.markdown:
+        print(markdown_table(rows))
+        return 0
     print("   Preis    | Pkt/100€ | Modell / CPU / RAM/SSD                 | Quelle     | Link")
     for r in rows:
         print(fmt_row(r))
@@ -134,6 +172,9 @@ def main(argv=None) -> int:
     s = sub.add_parser("scan", help="Quellen abfragen und bewerten")
     s.add_argument("--source", help="nur diese Quelle (Name aus sources.yaml)")
     s.add_argument("--limit", type=int, default=30)
+    s.add_argument("--notify-file", help="neue Angebote ab --notify-min-score hier hineinschreiben (fuer Push-Benachrichtigung)")
+    s.add_argument("--notify-min-score", type=float, default=4.5)
+    s.add_argument("--report", help="Markdown-Report in diese Datei schreiben, z.B. data/report.md")
     s.set_defaults(fn=cmd_scan)
 
     t = sub.add_parser("top", help="beste Angebote aus der Historie")
@@ -142,6 +183,7 @@ def main(argv=None) -> int:
     t.add_argument("--min-cpu", type=int, default=0, help="min. PassMark, z.B. 6000")
     t.add_argument("--min-ram", type=int, default=0)
     t.add_argument("--days", type=int, help="nur in den letzten N Tagen gesehen")
+    t.add_argument("--markdown", action="store_true")
     t.set_defaults(fn=cmd_top)
 
     c = sub.add_parser("calibrate", help="Selektoren fuer eine Shop-Liste vorschlagen")

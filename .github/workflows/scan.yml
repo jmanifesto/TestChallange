@@ -1,0 +1,66 @@
+# Laeuft ohne eigenen Rechner auf GitHub Actions: alle 3 Stunden scannen,
+# Historie (data/deals.db) und Report (data/report.md) ins Repo committen,
+# gute neue Angebote optional per ntfy.sh aufs Handy schicken.
+name: scan-deals
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan-deals
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Scan
+        run: |
+          thinkpad-deals scan --limit 50 \
+            --notify-file data/notify.txt --notify-min-score "${NOTIFY_MIN_SCORE:-4.5}" \
+            --report data/report.md | tee scan.log
+          {
+            echo "## Scan $(date -u '+%Y-%m-%d %H:%M') UTC"
+            echo '```'
+            head -40 scan.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          NOTIFY_MIN_SCORE: ${{ vars.NOTIFY_MIN_SCORE }}
+
+      # Push-Benachrichtigung aufs Handy: ntfy-App installieren, Topic abonnieren,
+      # Topic-Namen als Repository-Variable NTFY_TOPIC hinterlegen. Fertig.
+      - name: Notify (ntfy)
+        if: ${{ vars.NTFY_TOPIC != '' }}
+        run: |
+          if [ -s data/notify.txt ]; then
+            curl -sS -H "Title: ThinkPad-Deals: $(wc -l < data/notify.txt) neue Treffer" \
+                 -H "Priority: high" -H "Tags: computer" \
+                 --data-binary @data/notify.txt "https://ntfy.sh/${{ vars.NTFY_TOPIC }}"
+          fi
+
+      - name: Commit history and report
+        run: |
+          rm -f data/notify.txt
+          git config user.name "thinkpad-deals bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "scan: $(date -u '+%Y-%m-%d %H:%M') UTC [skip ci]"
+          git push
