@@ -31,9 +31,13 @@ sources:
 
   # 3) eBay-Suchergebnisse (Zustand: generalueberholt = LH_ItemCondition=2500|3000, Sofortkauf, Preis aufsteigend).
   #    Selektoren entsprechen dem eBay-Listing-Markup der letzten Jahre; bei Aenderungen calibrate nutzen.
+  #    eBay verbietet /sch/ in seiner robots.txt fuer alle Bots. ignore_robots: true heisst: du nimmst
+  #    das fuer deinen privaten Gebrauch (3 Seiten alle 3 Stunden) bewusst in Kauf. Sauberer waere die
+  #    eBay Browse API mit eigenem Developer-Key.
   - name: ebay
     kind: shop
     enabled: true
+    ignore_robots: true
     urls:
       - "https://www.ebay.de/sch/i.html?_nkw=thinkpad+16gb&LH_BIN=1&LH_ItemCondition=2500%7C3000&_sop=15&_udhi=300"
       - "https://www.ebay.de/sch/i.html?_nkw=thinkpad+t480+16gb&LH_BIN=1&_sop=15&_udhi=250"

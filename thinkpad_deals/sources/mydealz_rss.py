@@ -35,7 +35,8 @@ class MydealzRss:
 
     def fetch(self, fetcher: Fetcher) -> Iterable[Listing]:
         for url in self.feeds:
-            xml = fetcher.get(url)
+            # Feeds sind ausdruecklich fuer Maschinen gedacht, robots.txt greift hier nicht.
+            xml = fetcher.get(url, check_robots=False)
             yield from self.parse(xml)
 
     def parse(self, xml: str) -> Iterable[Listing]:

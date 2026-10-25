@@ -45,15 +45,20 @@ jobs:
         env:
           NOTIFY_MIN_SCORE: ${{ vars.NOTIFY_MIN_SCORE }}
 
-      # Push-Benachrichtigung aufs Handy: ntfy-App installieren, Topic abonnieren,
-      # Topic-Namen als Repository-Variable NTFY_TOPIC hinterlegen. Fertig.
+      # Push-Benachrichtigung aufs Handy per ntfy-App. Topic kommt aus der
+      # Repository-Variable NTFY_TOPIC, sonst aus dem Fallback hier.
       - name: Notify (ntfy)
-        if: ${{ vars.NTFY_TOPIC != '' }}
+        env:
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC || 'scrapper_jor' }}
         run: |
           if [ -s data/notify.txt ]; then
             curl -sS -H "Title: ThinkPad-Deals: $(wc -l < data/notify.txt) neue Treffer" \
                  -H "Priority: high" -H "Tags: computer" \
-                 --data-binary @data/notify.txt "https://ntfy.sh/${{ vars.NTFY_TOPIC }}"
+                 --data-binary @data/notify.txt "https://ntfy.sh/$NTFY_TOPIC"
+          elif grep -q "^0 Angebote gesehen" scan.log; then
+            { echo "Der Scan hat kein einziges Angebot geliefert. Fehler:"; grep "Fehler" scan.log || echo "(keine)"; } \
+              | curl -sS -H "Title: ThinkPad-Deals: Scan leer" -H "Priority: low" -H "Tags: warning" \
+                     --data-binary @- "https://ntfy.sh/$NTFY_TOPIC"
           fi
 
       - name: Commit history and report

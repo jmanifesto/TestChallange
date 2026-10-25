@@ -44,19 +44,33 @@ class Fetcher:
 
     # -- robots -------------------------------------------------------------
     def allowed(self, url: str) -> bool:
+        """True, wenn robots.txt den Abruf nicht ausdruecklich verbietet.
+
+        Pythons RobotFileParser wertet 401/403 auf robots.txt als 'alles verboten'.
+        Das passiert bei Bot-Schutz (Cloudflare & Co.) staendig und sagt nichts
+        ueber die Regeln aus. Deshalb holen wir robots.txt selbst: nur eine
+        erfolgreich gelesene Datei mit passender Disallow-Regel blockiert.
+        """
         if not self.respect_robots:
             return True
-        host = urlparse(url).netloc
-        rp = self._robots.get(host)
-        if rp is None:
-            rp = urllib.robotparser.RobotFileParser()
-            rp.set_url(f"{urlparse(url).scheme}://{host}/robots.txt")
+        parsed = urlparse(url)
+        host = parsed.netloc
+        if host not in self._robots:
+            rp = None
             try:
-                rp.read()
+                r = self.session.get(f"{parsed.scheme}://{host}/robots.txt", timeout=self.timeout_s)
+                if r.status_code == 200 and r.text.strip():
+                    rp = urllib.robotparser.RobotFileParser()
+                    rp.parse(r.text.splitlines())
             except Exception:
                 rp = None  # robots nicht lesbar -> nicht blockieren
             self._robots[host] = rp
-        return True if rp is None else rp.can_fetch(self.ua, url)
+        rp = self._robots[host]
+        if rp is None:
+            return True
+        # Gegen den generischen Bot-Namen pruefen, nicht gegen den Browser-UA-String:
+        # fuer "Mozilla/5.0 ..." gaebe es sonst nie eine passende Gruppe.
+        return rp.can_fetch("thinkpad-deals", url)
 
     # -- cache --------------------------------------------------------------
     def _cache_path(self, url: str) -> Optional[Path]:
@@ -92,12 +106,12 @@ class Fetcher:
         self._last_hit[host] = time.time()
 
     # -- public -------------------------------------------------------------
-    def get(self, url: str, render: bool = False) -> str:
+    def get(self, url: str, render: bool = False, check_robots: bool = True) -> str:
         cached = self._from_cache(url)
         if cached is not None:
             return cached
-        if not self.allowed(url):
-            raise PermissionError(f"robots.txt verbietet {url}")
+        if check_robots and not self.allowed(url):
+            raise PermissionError(f"robots.txt verbietet {url} (ignore_robots: true in sources.yaml setzt das bewusst ausser Kraft)")
         self._wait(url)
         body = self._render(url) if render else self._plain(url)
         self._to_cache(url, body)

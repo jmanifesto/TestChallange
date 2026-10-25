@@ -33,6 +33,7 @@ class GenericShop:
         render: bool = False,
         only_thinkpad: bool = True,
         base_url: Optional[str] = None,
+        ignore_robots: bool = False,
     ):
         self.name = name
         self.urls = urls
@@ -46,6 +47,7 @@ class GenericShop:
         self.render = render
         self.only_thinkpad = only_thinkpad
         self.base_url = base_url
+        self.ignore_robots = ignore_robots
 
     @classmethod
     def from_config(cls, c: dict) -> "GenericShop":
@@ -63,6 +65,7 @@ class GenericShop:
             render=c.get("render", False),
             only_thinkpad=c.get("only_thinkpad", True),
             base_url=c.get("base_url"),
+            ignore_robots=c.get("ignore_robots", False),
         )
 
     def fetch(self, fetcher: Fetcher) -> Iterable[Listing]:
@@ -70,7 +73,7 @@ class GenericShop:
             url: Optional[str] = start
             pages = 0
             while url and pages < self.max_pages:
-                html = fetcher.get(url, render=self.render)
+                html = fetcher.get(url, render=self.render, check_robots=not self.ignore_robots)
                 listings, url = self.parse(html, page_url=url)
                 yield from listings
                 pages += 1

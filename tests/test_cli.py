@@ -28,7 +28,7 @@ def test_scan_with_local_sources(tmp_path, capsys, monkeypatch):
 
     class FakeFetcher:
         def __init__(self, *a, **k): ...
-        def get(self, url, render=False):
+        def get(self, url, render=False, check_robots=True):
             return files["rss"] if "rss" in url else files["shop"]
 
     monkeypatch.setattr(cli, "Fetcher", FakeFetcher)
