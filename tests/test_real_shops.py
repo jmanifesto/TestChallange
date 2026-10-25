@@ -64,3 +64,13 @@ def test_page_placeholder_stops_on_empty_page():
     out = list(shop("hardware-online-shop", max_pages=4).fetch(F()))
     assert len(out) == 3 and calls == ["https://www.hardware-online-shop.de/refurbished-laptops/lenovo?page=1",
                                        "https://www.hardware-online-shop.de/refurbished-laptops/lenovo?page=2"]
+
+
+def test_afb_cards_take_smallest_variant():
+    listings, _ = shop("afb").parse((FIX / "afb_listing.html").read_text(encoding="utf-8"),
+                                    page_url="https://www.afbshop.de/gebrauchte-notebooks/lenovo-thinkpads/")
+    assert len(listings) == 2
+    t14s = next(l for l in listings if "T14s" in l.title)
+    assert t14s.price == 469.0
+    assert (t14s.specs.model, t14s.specs.cpu, t14s.specs.ram_gb, t14s.specs.ssd_gb) == ("T14s Gen 2", "i5-1135G7", 8, 250)
+    assert t14s.url == "https://www.afbshop.de/lenovo-thinkpad-t14s-gen-2-intel/de-35.209-b/"

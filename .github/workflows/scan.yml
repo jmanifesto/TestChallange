@@ -29,7 +29,12 @@ jobs:
           cache: pip
 
       - name: Install
-        run: pip install -e .
+        run: |
+          pip install -e .
+          # Playwright nur, wenn eine aktive Quelle render: true nutzt (z.B. rebuy)
+          if grep -q "render: true" config/sources.yaml; then
+            pip install playwright && playwright install --with-deps chromium
+          fi
 
       - name: Scan
         run: |

@@ -29,12 +29,12 @@ sources:
 
   # 3) refurbed (Marktplatz, 12-36 Monate Garantie). Listenpreis = guenstigster Zustand.
   #    Specs stehen nicht im Titel, sondern in der Zeile darunter ("Arbeitsspeicher Größe 16.0 GB | Speicherplatz 512 GB").
+  #    Die Kategorie liefert serverseitig 16 Karten; weitere Seiten laedt refurbed per JavaScript nach
+  #    (/2/ liefert dieselben 16). Fuer mehr: render: true setzen.
   - name: refurbed
     kind: shop
     urls:
       - "https://www.refurbed.de/c/lenovo-laptops/"
-      - "https://www.refurbed.de/c/lenovo-laptops/2/"
-      - "https://www.refurbed.de/c/lenovo-laptops/3/"
     max_pages: 1
     selectors:
       item: "article[data-test=product-tile]"
@@ -43,21 +43,38 @@ sources:
       link: "a[data-test=productcard-link]"
       description: "h3 + div"
 
-  # 4) rebuy. Die Volltextsuche ist unscharf (liefert iPads fuer "thinkpad i7"), daher Kategorie.
-  #    Die Kategorie-URL fuer Lenovo-Notebooks wird im naechsten probe-Lauf bestaetigt.
+  # 4) rebuy. Das Server-HTML enthaelt keine Produkte, die Liste kommt komplett per JavaScript
+  #    (Angular). Deshalb render: true; der Workflow installiert dann Playwright. Volltextsuche ist
+  #    unscharf, daher die Kategorie Notebooks > Lenovo.
   - name: rebuy
     kind: shop
     enabled: true
+    render: true
     urls:
       - "https://www.rebuy.de/kaufen/notebooks/lenovo?page={page}"
-    max_pages: 3
+    max_pages: 2
     selectors:
       item: "ry-product"
       title: "div.title"
       price: "span[data-cy=product-price]"
       link: "a[href]"
 
-  # 3) eBay-Suchergebnisse (Zustand: generalueberholt = LH_ItemCondition=2500|3000, Sofortkauf, Preis aufsteigend).
+  # 5) AfB (gemeinnuetziger Refurbisher, Shopware). Eigene ThinkPad-Kategorie, Paginierung ?p=N.
+  #    Der Titel traegt keine Specs; die Varianten stehen als Optionen in der Karte. Der Parser nimmt
+  #    jeweils die erste Option (kleinste Konfiguration), die zum angezeigten "ab"-Preis gehoert.
+  - name: afb
+    kind: shop
+    urls:
+      - "https://www.afbshop.de/gebrauchte-notebooks/lenovo-thinkpads/?p={page}"
+    max_pages: 3
+    selectors:
+      item: "div.product-box"
+      title: "a.product-name"
+      price: "span.product-price"
+      link: "a.product-name"
+      description: "div.product-variant-characteristics"
+
+  # 6) eBay-Suchergebnisse (Zustand: generalueberholt = LH_ItemCondition=2500|3000, Sofortkauf, Preis aufsteigend).
   #    Selektoren entsprechen dem eBay-Listing-Markup der letzten Jahre; bei Aenderungen calibrate nutzen.
   #    eBay verbietet /sch/ in seiner robots.txt fuer alle Bots. ignore_robots: true heisst: du nimmst
   #    das fuer deinen privaten Gebrauch (3 Seiten alle 3 Stunden) bewusst in Kauf. Sauberer waere die
