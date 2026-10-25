@@ -1,0 +1,60 @@
+# Hilfswerkzeug: eine Shop-Seite vom Runner aus laden, Selektoren vorschlagen,
+# rohes HTML als Artefakt ablegen. Damit lassen sich neue Quellen anbinden,
+# ohne dass ein eigener Rechner die Seite aufrufen muss.
+name: probe-page
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Listen-URL des Shops"
+        required: true
+      render:
+        description: "per Playwright rendern (JS-Shops)"
+        type: boolean
+        default: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          pip install -e .
+          if [ "${{ inputs.render }}" = "true" ]; then
+            pip install playwright && playwright install --with-deps chromium
+          fi
+      - name: Fetch and calibrate
+        run: |
+          mkdir -p probe
+          python - <<'PY'
+          import os, sys
+          from thinkpad_deals.http import Fetcher
+          url = os.environ["URL"]; render = os.environ["RENDER"] == "true"
+          f = Fetcher(cache_dir=None)
+          try:
+              html = f.get(url, render=render, check_robots=False)
+          except Exception as e:
+              html = f"<!-- FETCH FAILED: {e!r} -->"
+              print("FETCH FAILED:", e, file=sys.stderr)
+          open("probe/page.html", "w", encoding="utf-8").write(html)
+          print(f"{len(html)} Zeichen geladen")
+          PY
+          {
+            echo "## Probe: $URL"
+            echo '```'
+            thinkpad-deals calibrate probe/page.html || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          URL: ${{ inputs.url }}
+          RENDER: ${{ inputs.render }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: probe-page
+          path: probe/page.html
+          retention-days: 3
