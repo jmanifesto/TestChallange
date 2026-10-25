@@ -46,6 +46,6 @@ def test_top_with_profile(tmp_path, capsys):
               mk("ThinkPad T580 i5-8350U 16GB DDR4 RAM 256GB SSD", 179)):
         s.upsert(l)
     s.close()
-    assert main(["--db", str(db), "--profile", "dev", "top", "--markdown"]) == 0
+    assert main(["--db", str(db), "top", "--profile", "dev", "--markdown"]) == 0
     out = capsys.readouterr().out
     assert "T14 Gen 3" in out and "T580" not in out
