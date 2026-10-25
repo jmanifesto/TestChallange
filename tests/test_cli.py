@@ -63,6 +63,12 @@ sources:
     assert len(hits) == 2 and "T580" in hits[1] and "mydealz.de" in hits[1]
     md = report.read_text(encoding="utf-8")
     assert "## Neu in diesem Lauf (8)" in md and "| 179 € |" in md and "## Bis 250 € mit 16 GB" in md
+    import json
+    data = json.loads(report.with_suffix(".json").read_text(encoding="utf-8"))
+    keys = [sec["key"] for sec in data["sections"]]
+    assert keys == ["new", "top", "cheap"] and data["history_count"] == 8
+    t580 = next(r for r in data["sections"][0]["rows"] if r["model"] == "T580")
+    assert t580["price"] == 179.0 and t580["source"] == "mydealz" and t580["url"].startswith("https://")
 
     rc = main(["--control", str(tmp_path / "none.json"), "--config", str(cfg), "--db", str(db), "top", "--max-price", "200"])
     out = capsys.readouterr().out

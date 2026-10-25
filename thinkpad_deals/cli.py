@@ -186,21 +186,46 @@ def profile_rows(store: Store, profile: dict, limit: int = 25):
     return [r for r in rows if (r["cpu_score"] or 0) >= min_cpu][:limit]
 
 
+def row_dict(r) -> dict:
+    """Listing oder DB-Row -> flaches Dict fuer report.json."""
+    if isinstance(r, Listing):
+        s = r.specs
+        return {"price": r.price, "value_score": r.value_score, "model": s.model, "cpu": s.cpu, "ram_gb": s.ram_gb,
+                "ssd_gb": s.ssd_gb, "screen_in": s.screen_in, "grade": s.grade, "source": r.source, "url": r.url,
+                "title": r.title, "published": r.seen_at.isoformat(), "cpu_score": r.cpu_score, "label": deal_label(r)}
+    keys = ("price", "value_score", "model", "cpu", "ram_gb", "ssd_gb", "screen_in", "grade", "source", "url", "title",
+            "published", "cpu_score", "baseline_price", "first_seen", "last_seen")
+    d = {k: (r[k] if k in r.keys() else None) for k in keys}
+    d["label"] = ""
+    return d
+
+
 def write_report(store: Store, path: Path, new: list[Listing] | None = None, limit: int = 25,
                  profile: dict | None = None, profile_name: str | None = None) -> None:
+    """Schreibt report.md (lesbar) und daneben report.json (fuer die Steuerseite)."""
+    import json
     from datetime import datetime, timezone
-    parts = [f"# ThinkPad-Deals Report\n\nStand: {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC, "
-             f"{store.count()} Angebote in der Historie.\n"]
+    now = datetime.now(timezone.utc)
+    parts = [f"# ThinkPad-Deals Report\n\nStand: {now:%Y-%m-%d %H:%M} UTC, {store.count()} Angebote in der Historie.\n"]
+    data = {"generated_at": now.isoformat(), "history_count": store.count(), "profile": profile_name,
+            "profile_description": (profile or {}).get("description", "").strip(), "sections": []}
     if profile:
         rows = profile_rows(store, profile, limit)
         parts.append(f"## Profil '{profile_name}' ({len(rows)} aktuelle Treffer)\n\n"
                      f"{profile.get('description', '').strip()}\n\n" + markdown_table(rows) + "\n")
+        data["sections"].append({"key": "profile", "title": f"Profil '{profile_name}'", "rows": [row_dict(r) for r in rows]})
     if new:
         parts.append(f"## Neu in diesem Lauf ({len(new)})\n\n" + markdown_table(new[:limit]) + "\n")
-    parts.append("## Beste Preis-Leistung (letzte 14 Tage)\n\n" + markdown_table(store.top(limit=limit, days=14)) + "\n")
-    parts.append("## Bis 250 € mit 16 GB\n\n" + markdown_table(store.top(limit=limit, max_price=250, min_ram=16, days=14)) + "\n")
+        data["sections"].append({"key": "new", "title": "Neu in diesem Lauf", "rows": [row_dict(r) for r in new[:limit]]})
+    top = store.top(limit=limit, days=14)
+    parts.append("## Beste Preis-Leistung (letzte 14 Tage)\n\n" + markdown_table(top) + "\n")
+    data["sections"].append({"key": "top", "title": "Beste Preis-Leistung (14 Tage)", "rows": [row_dict(r) for r in top]})
+    cheap = store.top(limit=limit, max_price=250, min_ram=16, days=14)
+    parts.append("## Bis 250 € mit 16 GB\n\n" + markdown_table(cheap) + "\n")
+    data["sections"].append({"key": "cheap", "title": "Bis 250 € mit 16 GB", "rows": [row_dict(r) for r in cheap]})
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(parts), encoding="utf-8")
+    path.with_suffix(".json").write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
 def cmd_top(args) -> int:

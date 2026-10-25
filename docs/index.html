@@ -68,6 +68,21 @@ textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize
 .kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13px }
 .kv dt { color: var(--muted) } .kv dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums }
 #gate .panel { max-width: 420px; margin: 40px auto }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px }
+.tabs button { padding: 5px 10px; font-size: 13px }
+.tabs button[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg) }
+.hits { display: flex; flex-direction: column; gap: 0 }
+.hit { display: grid; grid-template-columns: 84px 1fr auto; gap: 2px 12px; padding: 9px 0; border-top: 1px solid var(--line); align-items: baseline }
+.hit:first-child { border-top: 0 }
+.hit .price { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; font-size: 15px }
+.hit .model { font-weight: 600 }
+.hit .specs { grid-column: 2; font-size: 12.5px; color: var(--muted); font-family: var(--mono) }
+.hit .score { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap }
+.hit .score b { color: var(--ok); font-weight: 500 }
+.hit a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line) }
+.hit a:hover { border-bottom-color: var(--accent) }
+.hit .src { grid-column: 3; font-size: 11.5px; text-align: right }
+@media (max-width: 480px) { .hit { grid-template-columns: 72px 1fr } .hit .score, .hit .src { grid-column: 2; text-align: left } }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important } }
 </style>
@@ -114,6 +129,16 @@ textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize
   </div>
 
   <div id="editor" hidden>
+    <h2>Treffer</h2>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between">
+        <div id="hitsMeta" class="hint" style="margin:0">Noch nicht geladen.</div>
+        <button id="btnHits">Aktualisieren</button>
+      </div>
+      <div class="tabs" id="hitTabs" style="margin-top:10px"></div>
+      <div class="hits" id="hits"></div>
+    </div>
+
     <h2>Letzter Lauf</h2>
     <div class="panel">
       <dl class="kv" id="runInfo"><dt>Status</dt><dd>–</dd></dl>
@@ -238,6 +263,7 @@ textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize
       render(); $("editor").hidden = false;
       setStatus($("connStatus"), `Geladen (${Object.keys(control.sources || {}).length} Quellen).`, "ok");
       loadRun().catch(e => { $("runInfo").innerHTML = `<dt>Status</dt><dd>${esc(e.message)}</dd>` });
+      loadReport();
     } catch (e) {
       setStatus($("connStatus"), "Fehler: " + e.message + (/401|403/.test(e.message) ? "\nToken prüfen: Repository Scrapper, Contents + Actions Read/write." : ""), "bad");
     }
@@ -254,6 +280,51 @@ textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize
     const when = new Date(r.created_at).toLocaleString("de-DE");
     const state = r.status === "completed" ? r.conclusion : r.status;
     $("runInfo").innerHTML = `<dt>Status</dt><dd>${esc(state)}</dd><dt>Gestartet</dt><dd>${esc(when)}</dd><dt>Auslöser</dt><dd>${esc(r.event === "schedule" ? "Zeitplan" : "manuell")}</dd>`;
+  }
+
+  let report = null, hitTab = null;
+  async function loadReport() {
+    const c = cfg();
+    $("hitsMeta").textContent = "Lade Report …";
+    try {
+      const f = await gh(`/repos/${c.owner}/${c.repo}/contents/data/report.json?ref=${encodeURIComponent(c.branch)}`);
+      report = JSON.parse(b64dec(f.content));
+      const when = new Date(report.generated_at).toLocaleString("de-DE");
+      $("hitsMeta").textContent = `Stand ${when}, ${report.history_count} Angebote in der Historie.`;
+      renderTabs();
+    } catch (e) {
+      $("hitsMeta").textContent = /404/.test(e.message) ? "Noch kein report.json. Nach dem nächsten Scan verfügbar." : "Report konnte nicht geladen werden: " + e.message;
+      $("hitTabs").innerHTML = ""; $("hits").innerHTML = "";
+    }
+  }
+  function renderTabs() {
+    const tabs = $("hitTabs"); tabs.innerHTML = "";
+    if (!report || !report.sections.length) { $("hits").innerHTML = ""; return; }
+    if (!report.sections.some(sec => sec.key === hitTab)) hitTab = report.sections[0].key;
+    report.sections.forEach(sec => {
+      const b = document.createElement("button"); b.type = "button"; b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", String(sec.key === hitTab));
+      b.textContent = `${sec.title} (${sec.rows.length})`;
+      b.addEventListener("click", () => { hitTab = sec.key; renderTabs(); });
+      tabs.appendChild(b);
+    });
+    renderHits(report.sections.find(sec => sec.key === hitTab));
+  }
+  function renderHits(sec) {
+    const box = $("hits"); box.innerHTML = "";
+    if (!sec.rows.length) { box.innerHTML = '<p class="hint">Keine Einträge in diesem Abschnitt.</p>'; return; }
+    sec.rows.forEach(r => {
+      const el = document.createElement("div"); el.className = "hit";
+      const price = r.price != null ? `${Math.round(r.price)} €` : "?";
+      const specs = [r.cpu || "?", r.ram_gb ? r.ram_gb + " GB" : "?", r.ssd_gb ? r.ssd_gb + " GB SSD" : "", r.screen_in ? r.screen_in + '"' : "", r.grade ? "Note " + r.grade : ""].filter(Boolean).join(" · ");
+      const score = r.value_score != null ? `<b>${r.value_score.toFixed(2)}</b> Pkt` : "";
+      el.innerHTML = `<div class="price">${esc(price)}</div>
+        <div class="model"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.model || r.title || "?")}</a>${r.label ? ` <span class="pill on">${esc(r.label)}</span>` : ""}</div>
+        <div class="score">${score}</div>
+        <div class="specs">${esc(specs)}</div>
+        <div class="src">${esc(r.source || "")}</div>`;
+      box.appendChild(el);
+    });
   }
 
   async function scanNow() {
@@ -353,6 +424,7 @@ textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize
   $("btnSave").addEventListener("click", save);
   $("btnReload").addEventListener("click", connect);
   $("btnScan").addEventListener("click", scanNow);
+  $("btnHits").addEventListener("click", loadReport);
   if (store.sget("tpr_open") === "1") showApp();
 })();
 </script>
