@@ -120,9 +120,14 @@ erreichen können. Für reines Sammeln ist Actions die robustere und billigere V
 
 - **mydealz RSS** (`/rss/gruppe/lenovo-thinkpad`, `/rss/suche?q=...`): strukturiert, offiziell,
   keine Last. Der Deal-Autor postet dort wöchentlich, die Temperatur steht in der Beschreibung.
-- **Refurbisher-Shops**: hardware-online-shop.de, AfB, Luxnote, ESM Computer, lapstore, GreenPanda,
-  Harlander. Jeweils die Lenovo-Kategorie als `kind: shop` anbinden. Gutschein-Codes stehen oft
-  nur im Warenkorb oder in Newslettern; die Historie fängt den Normalpreis trotzdem ein.
+- **Angebundene Shops** (Selektoren aus echten Seiten, Stand 2026-10-25): hardware-online-shop.de
+  (Lenovo-Kategorie, 4 Seiten), refurbed (Kategorie Lenovo-Laptops, Specs aus der Zeile unter dem
+  Titel), AfB (ThinkPad-Kategorie, 3 Seiten, kleinste Variante je Karte), rebuy (Notebooks > Lenovo,
+  per Playwright gerendert, weil das Server-HTML keine Produkte enthält).
+- **Noch nicht angebunden**: Luxnote (Domain auf luxnote-hannover.de umgezogen, Kategorie-URL offen),
+  ESM Computer, lapstore, GreenPanda, Harlander. Vorgehen: `probe-page` mit der Listen-URL starten,
+  Vorschlag in `sources.yaml` übernehmen. Gutschein-Codes stehen oft nur im Warenkorb oder in
+  Newslettern; die Historie fängt den Normalpreis trotzdem ein.
 - **eBay-Suche**: als Quelle vorkonfiguriert, aber deaktiviert. eBay beantwortet Anfragen von
   GitHub-Actions-Runnern mit 403 und sperrt `/sch/` per robots.txt. Lokal kann es laufen
   (`enabled: true`), sauber ist nur die eBay Browse API mit eigenem Key.
