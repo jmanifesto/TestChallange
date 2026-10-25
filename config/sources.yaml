@@ -1,0 +1,46 @@
+# Quellen fuer `thinkpad-deals scan`.
+# Jede Quelle hat kind: mydealz_rss | shop. Mit enabled: false abschalten.
+delay_s: 2.0          # Mindestabstand zwischen Requests pro Host
+cache_ttl_s: 1800     # geholte Seiten 30 min lokal cachen (schont die Shops beim Entwickeln)
+
+sources:
+  # 1) Strukturiert und offiziell: die mydealz-RSS-Feeds.
+  - name: mydealz
+    kind: mydealz_rss
+    feeds:
+      - https://www.mydealz.de/rss/gruppe/lenovo-thinkpad
+      - https://www.mydealz.de/rss/suche?q=thinkpad
+      - https://www.mydealz.de/rss/suche?q=refurbished+notebook
+
+  # 2) Der Haendler aus dem Deal. Die Selektoren sind Platzhalter und muessen
+  #    einmal mit `thinkpad-deals calibrate <URL>` ermittelt werden, weil der
+  #    Shop aus der Entwicklungsumgebung nicht erreichbar war.
+  - name: hardware-online-shop
+    kind: shop
+    enabled: false
+    urls:
+      - https://www.hardware-online-shop.de/notebooks/lenovo/
+    max_pages: 5
+    render: false
+    selectors:
+      item: "div.product-box"
+      title: "a.product-name"
+      price: "span.product-price"
+      link: "a.product-name"
+      next_page: "a.pagination-next"
+
+  # 3) eBay-Suchergebnisse (Zustand: generalueberholt = LH_ItemCondition=2500|3000, Sofortkauf, Preis aufsteigend).
+  #    Selektoren entsprechen dem eBay-Listing-Markup der letzten Jahre; bei Aenderungen calibrate nutzen.
+  - name: ebay
+    kind: shop
+    enabled: true
+    urls:
+      - "https://www.ebay.de/sch/i.html?_nkw=thinkpad+16gb&LH_BIN=1&LH_ItemCondition=2500%7C3000&_sop=15&_udhi=300"
+      - "https://www.ebay.de/sch/i.html?_nkw=thinkpad+t480+16gb&LH_BIN=1&_sop=15&_udhi=250"
+    max_pages: 3
+    selectors:
+      item: "li.s-item"
+      title: ".s-item__title"
+      price: ".s-item__price"
+      link: "a.s-item__link"
+      next_page: "a.pagination__next"
