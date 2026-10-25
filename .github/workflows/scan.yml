@@ -1,11 +1,12 @@
-# Laeuft ohne eigenen Rechner auf GitHub Actions: alle 3 Stunden scannen,
-# Historie (data/deals.db) und Report (data/report.md) ins Repo committen,
-# gute neue Angebote optional per ntfy.sh aufs Handy schicken.
+# Laeuft ohne eigenen Rechner auf GitHub Actions. Der Cron weckt stuendlich;
+# ob wirklich gescannt wird, entscheidet interval_hours in config/control.json
+# (das stellt die Steuerseite ein). Historie (data/deals.db) und Report
+# (data/report.md) werden ins Repo committet, Treffer gehen per ntfy aufs Handy.
 name: scan-deals
 
 on:
   schedule:
-    - cron: "17 */3 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,12 +24,27 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
+      - name: Intervall pruefen
+        id: gate
+        run: |
+          hours=$(jq -r '.interval_hours // 3' config/control.json)
+          last=$(cat data/last_scan.txt 2>/dev/null || echo 0)
+          now=$(date +%s)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ $((now - last)) -ge $((hours * 3600 - 300)) ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; echo "Scan faellig (Intervall ${hours}h)."
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Noch nicht faellig (Intervall ${hours}h), uebersprungen."
+          fi
+          echo "topic=$(jq -r '.ntfy_topic // empty' config/control.json)" >> "$GITHUB_OUTPUT"
+
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
         with:
           python-version: "3.12"
           cache: pip
 
       - name: Install
+        if: steps.gate.outputs.run == 'true'
         run: |
           pip install -e .
           # Playwright nur, wenn eine aktive Quelle render: true nutzt (z.B. rebuy)
@@ -37,10 +53,12 @@ jobs:
           fi
 
       - name: Scan
+        if: steps.gate.outputs.run == 'true'
         run: |
           set -o pipefail
-          thinkpad-deals scan --limit 50 --profile "${PROFILE:-dev}" \
-            --notify-file data/notify.txt --notify-min-score "${NOTIFY_MIN_SCORE:-4.5}" \
+          date +%s > data/last_scan.txt
+          thinkpad-deals scan ${PROFILE:+--profile "$PROFILE"} \
+            --notify-file data/notify.txt ${NOTIFY_MIN_SCORE:+--notify-min-score "$NOTIFY_MIN_SCORE"} \
             --report data/report.md 2>&1 | tee scan.log \
             || echo "SCAN FAILED (exit $?)" | tee -a scan.log
           {
@@ -56,8 +74,9 @@ jobs:
       # Push-Benachrichtigung aufs Handy per ntfy-App. Topic kommt aus der
       # Repository-Variable NTFY_TOPIC, sonst aus dem Fallback hier.
       - name: Notify (ntfy)
+        if: steps.gate.outputs.run == 'true'
         env:
-          NTFY_TOPIC: ${{ vars.NTFY_TOPIC || 'scrapper_jor' }}
+          NTFY_TOPIC: ${{ steps.gate.outputs.topic || vars.NTFY_TOPIC || 'scrapper_jor' }}
         run: |
           if [ -s data/notify.txt ]; then
             curl -sS -H "Title: ThinkPad-Deals: $(wc -l < data/notify.txt) neue Treffer" \
@@ -73,6 +92,7 @@ jobs:
           fi
 
       - name: Commit history and report
+        if: steps.gate.outputs.run == 'true'
         run: |
           rm -f data/notify.txt
           git config user.name "thinkpad-deals bot"

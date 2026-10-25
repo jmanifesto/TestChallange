@@ -135,5 +135,12 @@ class Store:
         args.append(limit)
         return self.conn.execute(q, args).fetchall()
 
+    def prune(self, days: int) -> int:
+        """Angebote loeschen, die seit `days` Tagen nicht mehr gesehen wurden."""
+        cur = self.conn.execute("DELETE FROM observations WHERE last_seen < datetime('now', ?)", (f"-{int(days)} days",))
+        self.conn.execute("DELETE FROM price_history WHERE seen_at < datetime('now', ?)", (f"-{int(days)} days",))
+        self.conn.commit()
+        return cur.rowcount
+
     def count(self) -> int:
         return self.conn.execute("SELECT COUNT(*) FROM observations").fetchone()[0]

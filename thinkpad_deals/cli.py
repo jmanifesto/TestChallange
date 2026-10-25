@@ -23,6 +23,39 @@ from .store import Store
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "config" / "sources.yaml"
+DEFAULT_CONTROL = ROOT / "config" / "control.json"
+
+
+def load_control(path) -> dict:
+    """config/control.json: die von der Steuerseite bearbeiteten Einstellungen. Fehlt sie, gilt sources.yaml."""
+    import json
+    p = Path(path) if path else DEFAULT_CONTROL
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def apply_control(cfg: dict, control: dict) -> dict:
+    """enabled/max_pages/urls pro Quelle aus control.json ueber sources.yaml legen."""
+    ctl_sources = control.get("sources") or {}
+    for entry in cfg.get("sources", []):
+        c = ctl_sources.get(entry["name"])
+        if not c:
+            continue
+        for key in ("enabled", "max_pages", "render"):
+            if key in c:
+                entry[key] = c[key]
+        if c.get("urls"):
+            entry["feeds" if entry.get("kind") == "mydealz_rss" else "urls"] = list(c["urls"])
+    return cfg
+
+
+def title_passes(title: str, control: dict) -> bool:
+    low = (title or "").lower()
+    kws = [k.lower() for k in control.get("keywords") or []]
+    if kws and not any(k in low for k in kws):
+        return False
+    return not any(x.lower() in low for x in control.get("exclude") or [])
 
 
 def load_config(path: Path) -> dict:
@@ -54,20 +87,36 @@ def fmt_row(l) -> str:
     )
 
 
-def get_profile(args) -> dict | None:
-    if not args.profile:
+def get_profile(args, control: dict | None = None) -> dict | None:
+    control = control or {}
+    name = args.profile or control.get("profile")
+    if not name:
         return None
     profiles = load_profiles(args.profiles)
-    if args.profile not in profiles:
-        raise SystemExit(f"Profil {args.profile!r} nicht in config/profiles.yaml. Vorhanden: {', '.join(profiles)}")
-    return profiles[args.profile]
+    if name not in profiles:
+        raise SystemExit(f"Profil {name!r} nicht in config/profiles.yaml. Vorhanden: {', '.join(profiles)}")
+    prof = dict(profiles[name])
+    prof.update({k: v for k, v in (control.get("profile_overrides") or {}).items() if v not in (None, "")})
+    args.profile = name
+    return prof
 
 
 def cmd_scan(args) -> int:
-    cfg = load_config(args.config)
+    control = load_control(args.control)
+    cfg = apply_control(load_config(args.config), control)
     cpu_table = load_cpu_scores(args.cpu_scores)
-    profile = get_profile(args)
+    profile = get_profile(args, control)
+    if control.get("notify_min_score") is not None and args.notify_min_score is None:
+        args.notify_min_score = float(control["notify_min_score"])
+    if args.notify_min_score is None:
+        args.notify_min_score = 4.5
+    if control.get("limit"):
+        args.limit = int(control["limit"])
     store = Store(args.db)
+    if control.get("retention_days"):
+        removed = store.prune(int(control["retention_days"]))
+        if removed:
+            print(f"{removed} Angebote aelter als {control['retention_days']} Tage entfernt.")
     fetcher = Fetcher(delay_s=cfg.get("delay_s", 2.0), cache_ttl_s=cfg.get("cache_ttl_s", 1800))
     sources = build_sources(cfg, only=args.source)
     if not sources:
@@ -79,6 +128,8 @@ def cmd_scan(args) -> int:
         n_src = 0
         try:
             for listing in src.fetch(fetcher):
+                if not title_passes(listing.title, control):
+                    continue
                 total += 1
                 n_src += 1
                 evaluate(listing, store, cpu_table)
@@ -154,7 +205,7 @@ def write_report(store: Store, path: Path, new: list[Listing] | None = None, lim
 
 def cmd_top(args) -> int:
     store = Store(args.db)
-    profile = get_profile(args)
+    profile = get_profile(args, load_control(args.control))
     if profile:
         rows = profile_rows(store, profile, args.limit)
     else:
@@ -207,6 +258,7 @@ def main(argv=None) -> int:
     p.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     p.add_argument("--db", default="data/deals.db")
     p.add_argument("--cpu-scores", type=Path, default=None)
+    p.add_argument("--control", type=Path, default=None, help="Steuerdatei, Standard config/control.json")
     sub = p.add_subparsers(dest="cmd", required=True)
     prof = argparse.ArgumentParser(add_help=False)
     prof.add_argument("--profiles", type=Path, default=None, help="Pfad zu profiles.yaml")
@@ -216,7 +268,7 @@ def main(argv=None) -> int:
     s.add_argument("--source", help="nur diese Quelle (Name aus sources.yaml)")
     s.add_argument("--limit", type=int, default=30)
     s.add_argument("--notify-file", help="neue Angebote ab --notify-min-score hier hineinschreiben (fuer Push-Benachrichtigung)")
-    s.add_argument("--notify-min-score", type=float, default=4.5)
+    s.add_argument("--notify-min-score", type=float, default=None)
     s.add_argument("--report", help="Markdown-Report in diese Datei schreiben, z.B. data/report.md")
     s.set_defaults(fn=cmd_scan)
 

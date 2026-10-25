@@ -1,0 +1,74 @@
+{
+  "_comment": "Steuerdatei. Wird von der Steuerseite bearbeitet und vom Scanner bei jedem Lauf gelesen.",
+  "interval_hours": 3,
+  "retention_days": 60,
+  "limit": 50,
+  "profile": "dev",
+  "notify_min_score": 4.5,
+  "ntfy_topic": "scrapper_jor",
+  "keywords": [
+    "thinkpad"
+  ],
+  "exclude": [
+    "dock",
+    "netzteil",
+    "akku für",
+    "ersatzakku",
+    "hülle",
+    "tasche",
+    "ladegerät",
+    "tastaturaufkleber"
+  ],
+  "profile_overrides": {
+    "min_ram_gb": 32,
+    "min_ssd_gb": 512,
+    "min_cpu_score": 12000,
+    "max_price": 1000,
+    "max_age_days": 14
+  },
+  "sources": {
+    "mydealz": {
+      "enabled": true,
+      "urls": [
+        "https://www.mydealz.de/rss/gruppe/lenovo-thinkpad",
+        "https://www.mydealz.de/rss/neu"
+      ]
+    },
+    "hardware-online-shop": {
+      "enabled": true,
+      "max_pages": 4,
+      "urls": [
+        "https://www.hardware-online-shop.de/refurbished-laptops/lenovo?page={page}"
+      ]
+    },
+    "refurbed": {
+      "enabled": true,
+      "urls": [
+        "https://www.refurbed.de/c/lenovo-laptops/"
+      ],
+      "max_pages": 1
+    },
+    "afb": {
+      "enabled": true,
+      "max_pages": 3,
+      "urls": [
+        "https://www.afbshop.de/gebrauchte-notebooks/lenovo-thinkpads/?p={page}"
+      ]
+    },
+    "rebuy": {
+      "enabled": false,
+      "urls": [
+        "https://www.rebuy.de/kaufen/notebooks/lenovo?page={page}"
+      ],
+      "max_pages": 2
+    },
+    "ebay": {
+      "enabled": false,
+      "urls": [
+        "https://www.ebay.de/sch/i.html?_nkw=thinkpad+16gb&LH_BIN=1&LH_ItemCondition=2500%7C3000&_sop=15&_udhi=300",
+        "https://www.ebay.de/sch/i.html?_nkw=thinkpad+t480+16gb&LH_BIN=1&_sop=15&_udhi=250"
+      ],
+      "max_pages": 3
+    }
+  }
+}

@@ -47,7 +47,7 @@ sources:
     db = tmp_path / "deals.db"
     notify = tmp_path / "notify.txt"
     report = tmp_path / "report.md"
-    rc = main(["--config", str(cfg), "--db", str(db), "scan", "--notify-file", str(notify),
+    rc = main(["--control", str(tmp_path / "none.json"), "--config", str(cfg), "--db", str(db), "scan", "--notify-file", str(notify),
                "--notify-min-score", "4.4", "--report", str(report)])
     out = capsys.readouterr().out
     assert rc == 0
@@ -64,9 +64,9 @@ sources:
     md = report.read_text(encoding="utf-8")
     assert "## Neu in diesem Lauf (8)" in md and "| 179 € |" in md and "## Bis 250 € mit 16 GB" in md
 
-    rc = main(["--config", str(cfg), "--db", str(db), "top", "--max-price", "200"])
+    rc = main(["--control", str(tmp_path / "none.json"), "--config", str(cfg), "--db", str(db), "top", "--max-price", "200"])
     out = capsys.readouterr().out
     assert rc == 0 and "T580" in out and "399.00" not in out
-    rc = main(["--config", str(cfg), "--db", str(db), "top", "--markdown", "--limit", "2"])
+    rc = main(["--control", str(tmp_path / "none.json"), "--config", str(cfg), "--db", str(db), "top", "--markdown", "--limit", "2"])
     out = capsys.readouterr().out
     assert rc == 0 and out.startswith("| Preis |") and out.count("[Link](") == 2
