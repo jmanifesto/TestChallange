@@ -82,7 +82,27 @@ _GRADE_RE = re.compile(r"\b(?:Zustand|Grade|Klasse|Note)?\s*:?\s*\b([ABC])\s?([+
 _TOUCH_RE = re.compile(r"\btouch", re.I)
 
 
+# Plausible Groessen. 2230/2242/2280 sind M.2-Bauformen, keine Kapazitaeten.
+_RAM_OK = {2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 128}
+_SSD_BAD = {2230, 2242, 2280, 1920, 1080, 1200, 1600}
+
+
+def _ram_ok(v) -> bool:
+    return v in _RAM_OK
+
+
+def _ssd_ok(v) -> bool:
+    return v is not None and 64 <= v <= 8192 and v not in _SSD_BAD
+
+
+def _normalize_title(title: str) -> str:
+    # "ThinkPadX1 Yoga" -> "ThinkPad X1 Yoga", "T14Gen2" -> "T14 Gen2"
+    title = re.sub(r"(?i)thinkpad(?=[A-Z0-9])", "ThinkPad ", title)
+    return re.sub(r"(?i)(\d)(gen)\b", r"\1 \2", title)
+
+
 def parse_specs(title: str, description: str = "") -> Specs:
+    title = _normalize_title(title or "")
     text = f"{title} {description or ''}"
     s = Specs()
 
@@ -102,36 +122,29 @@ def parse_specs(title: str, description: str = "") -> Specs:
         elif m.group(6):
             s.cpu = f"Core Ultra {m.group(6)} {m.group(7).upper()}"
 
-    m = _RAM_LABEL_RE.search(text)
+    # RAM: Kandidaten in Prioritaet, erster plausibler Wert gewinnt
+    ram_cands = []
+    for pat in (_RAM_LABEL_RE, _RAM_RE, _RAM_BARE_RE):
+        ram_cands += [int(m.group(1)) for m in pat.finditer(text)]
+    m = _RAM_SLASH_RE.search(text)
     if m:
-        s.ram_gb = int(m.group(1))
-    m = _SSD_LABEL_RE.search(text)
-    if m:
-        s.ssd_gb = int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000
-    m = None if s.ram_gb else (_RAM_RE.search(text) or _RAM_BARE_RE.search(text))
-    if m:
-        s.ram_gb = int(m.group(1))
-    else:
-        m = _RAM_SLASH_RE.search(text)
-        if m:
-            s.ram_gb = int(m.group(1))
-            s.ssd_gb = int(m.group(2))
-    if s.ram_gb is None:
-        m = _RAM_GUESS_RE.search(text)
-        if m:
-            s.ram_gb = int(m.group(1))
-    m = _SSD_BARE_RE.search(text)
-    if m and s.ssd_gb is None:
-        s.ssd_gb = int(m.group(1))
+        ram_cands.append(int(m.group(1)))
+    ram_cands += [int(m.group(1)) for m in _RAM_GUESS_RE.finditer(text)]
+    s.ram_gb = next((v for v in ram_cands if _ram_ok(v)), None)
 
-    m = None if s.ssd_gb else _SSD_RE.search(text)
+    # SSD: ebenso
+    ssd_cands = []
+    for m in _SSD_LABEL_RE.finditer(text):
+        ssd_cands.append(int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000)
+    for m in _SSD_RE.finditer(text):
+        ssd_cands.append(int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000)
+    m = _RAM_SLASH_RE.search(text)
     if m:
-        s.ssd_gb = int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000
-    elif s.ssd_gb is None and s.ram_gb is not None:
-        # "16GB RAM, 256GB" ohne Einheit dahinter
-        m = re.search(r"\b(\d{3,4})\s*GB\b", text, re.I)
-        if m:
-            s.ssd_gb = int(m.group(1))
+        ssd_cands.append(int(m.group(2)))
+    ssd_cands += [int(m.group(1)) for m in _SSD_BARE_RE.finditer(text)]
+    if s.ram_gb is not None:
+        ssd_cands += [int(m.group(1)) for m in re.finditer(r"\b(\d{3,4})\s*GB\b", text, re.I)]
+    s.ssd_gb = next((v for v in ssd_cands if _ssd_ok(v)), None)
 
     m = _SCREEN_RE.search(text)
     if m:

@@ -53,9 +53,12 @@ sources:
     assert rc == 0
     assert "8 Angebote gesehen, 8 neu" in out
     # Preis-Leistung sortiert: T14 Gen 2 (399) und T580 (179) ganz oben, L13 fuer 1099 ganz unten
-    lines = out.splitlines()[3:]
+    all_lines = out.splitlines()
+    hdr = next(i for i, l in enumerate(all_lines) if l.startswith("   Preis"))
+    lines = [l for l in all_lines[hdr + 1:] if "€ |" in l]
     assert "T14 Gen 2" in lines[0] and "179.00" in lines[1] and "T580" in lines[1]
-    assert "1099.00" in lines[-3]
+    assert "1099.00" in lines[-1]
+    assert "[mydealz] 3 Angebote" in out and "[shop] 5 Angebote" in out
     hits = notify.read_text(encoding="utf-8").splitlines()
     assert len(hits) == 2 and "T580" in hits[1] and "mydealz.de" in hits[1]
     md = report.read_text(encoding="utf-8")

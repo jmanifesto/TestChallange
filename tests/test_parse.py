@@ -54,3 +54,17 @@ def test_is_thinkpad():
     assert is_thinkpad("Lenovo T480s 14 Zoll")
     assert not is_thinkpad("HP HyperX OMEN 16")
     assert not is_thinkpad("Lenovo IdeaPad 5")
+
+
+def test_plausibility_filters_formfactor_and_bogus_ram():
+    s = parse_specs("Lenovo ThinkPad T14 Gen 1 i5-10310U 16GB RAM 512GB M.2 SSD",
+                    "Formfaktor M.2 2280 SSD, 512 GB Speicher, Arbeitsspeicher 16 GB DDR4")
+    assert (s.ram_gb, s.ssd_gb) == (16, 512)
+    s = parse_specs("Lenovo ThinkPad X13 Gen 2 i5-1145G7 8GB RAM 256GB M.2 2280 SSD")
+    assert (s.ram_gb, s.ssd_gb) == (8, 256)
+
+
+def test_thinkpad_without_space_and_yoga_370():
+    s = parse_specs('Lenovo ThinkPadX1 Yoga 4th | 14" | i5-8365U | 16 GB RAM | 256 GB SSD')
+    assert s.model == "X1 Yoga Gen 4"
+    assert parse_specs("Lenovo ThinkPad T14Gen2 i5-1145G7 16GB 256GB").model == "T14 Gen 2"

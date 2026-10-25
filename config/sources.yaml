@@ -11,7 +11,6 @@ sources:
     kind: mydealz_rss
     feeds:
       - https://www.mydealz.de/rss/gruppe/lenovo-thinkpad
-      - https://www.mydealz.de/rss/gruppe/lenovo-laptops
       - https://www.mydealz.de/rss/neu
 
   # 2) Der Haendler aus dem T580-Deal. Selektoren per probe-page am 2026-10-25 ermittelt.

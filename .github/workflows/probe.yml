@@ -1,7 +1,7 @@
 # Hilfswerkzeug: Shop-Seiten vom Runner aus laden, Selektoren vorschlagen und
 # das rohe HTML in den Branch `probe-data` committen (nicht in main). Damit
 # lassen sich neue Quellen anbinden, ohne dass ein eigener Rechner die Seite
-# aufrufen muss. Der Branch wird bei jedem Lauf neu aufgesetzt.
+# aufrufen muss. Neue Laeufe ergaenzen den Branch, gleiche URLs ueberschreiben ihre Datei.
 name: probe-page
 
 on:
@@ -63,7 +63,13 @@ jobs:
         run: |
           git config user.name "thinkpad-deals bot"
           git config user.email "actions@users.noreply.github.com"
-          git checkout --orphan probe-data
-          git rm -rfq --cached . && git add -f probe/
-          git commit -qm "probe: $(date -u '+%Y-%m-%d %H:%M') UTC"
-          git push -f origin probe-data
+          mv probe /tmp/probe-new
+          if git fetch origin probe-data 2>/dev/null; then
+            git checkout -q probe-data
+          else
+            git checkout -q --orphan probe-data && git rm -rfq --cached . && git clean -fdq
+          fi
+          mkdir -p probe && cp /tmp/probe-new/* probe/
+          git add -f probe/
+          git commit -qm "probe: $(date -u '+%Y-%m-%d %H:%M') UTC" || true
+          git push origin probe-data

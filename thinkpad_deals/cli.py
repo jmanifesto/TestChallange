@@ -76,14 +76,17 @@ def cmd_scan(args) -> int:
     new: list[Listing] = []
     total = 0
     for src in sources:
+        n_src = 0
         try:
             for listing in src.fetch(fetcher):
                 total += 1
+                n_src += 1
                 evaluate(listing, store, cpu_table)
                 if store.upsert(listing):
                     new.append(listing)
         except Exception as e:  # eine kaputte Quelle soll die anderen nicht stoppen
             print(f"[{src.name}] Fehler: {e}", file=sys.stderr)
+        print(f"[{src.name}] {n_src} Angebote" + ("  <- nichts gefunden, Selektoren pruefen" if n_src == 0 else ""))
     new.sort(key=lambda l: (l.value_score is None, -(l.value_score or 0)))
     print(f"{total} Angebote gesehen, {len(new)} neu, {store.count()} in der Historie.\n")
     print("   Preis    | Pkt/100€ | Modell / CPU / RAM/SSD                 | Quelle     | Link")
