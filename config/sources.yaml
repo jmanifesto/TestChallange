@@ -14,22 +14,48 @@ sources:
       - https://www.mydealz.de/rss/gruppe/lenovo-laptops
       - https://www.mydealz.de/rss/neu
 
-  # 2) Der Haendler aus dem Deal. Die Selektoren sind Platzhalter und muessen
-  #    einmal mit `thinkpad-deals calibrate <URL>` ermittelt werden, weil der
-  #    Shop aus der Entwicklungsumgebung nicht erreichbar war.
+  # 2) Der Haendler aus dem T580-Deal. Selektoren per probe-page am 2026-10-25 ermittelt.
+  #    Preis in der Liste ist der guenstigste Zustand; die Note (A-/B+/B) waehlt man auf der Produktseite.
   - name: hardware-online-shop
     kind: shop
-    enabled: false
     urls:
-      - https://www.hardware-online-shop.de/notebooks/lenovo/
-    max_pages: 5
-    render: false
+      - "https://www.hardware-online-shop.de/refurbished-laptops/lenovo?page={page}"
+    max_pages: 4
     selectors:
-      item: "div.product-box"
-      title: "a.product-name"
-      price: "span.product-price"
-      link: "a.product-name"
-      next_page: "a.pagination-next"
+      item: "div.product-item"
+      title: "a.product-title"
+      price: "div.product-price span"
+      link: "a.product-title"
+
+  # 3) refurbed (Marktplatz, 12-36 Monate Garantie). Listenpreis = guenstigster Zustand.
+  #    Specs stehen nicht im Titel, sondern in der Zeile darunter ("Arbeitsspeicher Größe 16.0 GB | Speicherplatz 512 GB").
+  - name: refurbed
+    kind: shop
+    urls:
+      - "https://www.refurbed.de/c/lenovo-laptops/"
+      - "https://www.refurbed.de/c/lenovo-laptops/2/"
+      - "https://www.refurbed.de/c/lenovo-laptops/3/"
+    max_pages: 1
+    selectors:
+      item: "article[data-test=product-tile]"
+      title: "h3[data-test=productcard-name]"
+      price: "div[data-test=product-price]"
+      link: "a[data-test=productcard-link]"
+      description: "h3 + div"
+
+  # 4) rebuy. Die Volltextsuche ist unscharf (liefert iPads fuer "thinkpad i7"), daher Kategorie.
+  #    Die Kategorie-URL fuer Lenovo-Notebooks wird im naechsten probe-Lauf bestaetigt.
+  - name: rebuy
+    kind: shop
+    enabled: true
+    urls:
+      - "https://www.rebuy.de/kaufen/notebooks/lenovo?page={page}"
+    max_pages: 3
+    selectors:
+      item: "ry-product"
+      title: "div.title"
+      price: "span[data-cy=product-price]"
+      link: "a[href]"
 
   # 3) eBay-Suchergebnisse (Zustand: generalueberholt = LH_ItemCondition=2500|3000, Sofortkauf, Preis aufsteigend).
   #    Selektoren entsprechen dem eBay-Listing-Markup der letzten Jahre; bei Aenderungen calibrate nutzen.

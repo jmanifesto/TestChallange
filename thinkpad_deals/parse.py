@@ -53,8 +53,8 @@ def parse_all_prices(text: str) -> list[float]:
 
 _MODEL_PATTERNS = [
     # X1 Carbon Gen 6 / X1 Carbon 6th / X1 Yoga 2nd / X1 Nano
-    (re.compile(r"\bX1\s*(Carbon|Yoga|Nano|Extreme|Titanium)\s*(?:Gen(?:eration)?\.?\s*(\d+)|(\d+)(?:st|nd|rd|th)?\b(?:\s*Gen)?)?", re.I),
-     lambda m: f"X1 {m.group(1).title()}" + (f" Gen {m.group(2) or m.group(3)}" if (m.group(2) or m.group(3)) else "")),
+    (re.compile(r"\bX1\s*(Carbon|Yoga|Nano|Extreme|Titanium)\s*(?:Gen(?:eration)?\.?\s*(\d+)|G(\d+)\b|(\d+)(?:st|nd|rd|th)?\b(?:\s*Gen)?)?", re.I),
+     lambda m: f"X1 {m.group(1).title()}" + (f" Gen {m.group(2) or m.group(3) or m.group(4)}" if (m.group(2) or m.group(3) or m.group(4)) else "")),
     # T480s, T14 Gen 2, L15 G3, P52s, E14 Gen 4, X390, L13 Yoga
     (re.compile(r"\b([TXLPEAW])(\d{2,3})(s|p|i)?\s*(?:Yoga)?\s*(?:Gen(?:eration)?\.?\s*(\d+)|G(\d+))?\b", re.I),
      lambda m: f"{m.group(1).upper()}{m.group(2)}{(m.group(3) or '').lower()}"
@@ -69,6 +69,9 @@ _CPU_RE = re.compile(
 )
 _RAM_RE = re.compile(r"\b(\d{1,3})\s*GB\s*(?:(?:LP)?DDR\d?\w*|RAM|Arbeitsspeicher|Memory)", re.I)
 _RAM_BARE_RE = re.compile(r"\b(\d{1,3})\s*RAM\b", re.I)          # "8 RAM, 128 SSD"
+# refurbed/rebuy-Schreibweise: "Arbeitsspeicher Größe 16.0 GB", "Speicherplatz 512 GB" / "1 TB"
+_RAM_LABEL_RE = re.compile(r"Arbeitsspeicher(?:\s*Gr[öo]ß?e)?\s*:?\s*(\d{1,3})(?:[.,]0)?\s*GB", re.I)
+_SSD_LABEL_RE = re.compile(r"(?:Speicherplatz|Festplatte|Speicher)\s*(?:Größe)?\s*:?\s*(?:(\d{3,4})\s*GB|(\d)(?:[.,]0)?\s*TB)", re.I)
 _SSD_BARE_RE = re.compile(r"\b(\d{3,4})\s*SSD\b", re.I)
 # "16GB 256GB SSD": typische RAM-Groesse ohne Einheitenwort, nicht gefolgt von SSD/NVMe
 _RAM_GUESS_RE = re.compile(r"\b(4|8|12|16|20|24|32|40|48|64)\s*GB\b(?!\s*(?:SSD|NVMe|HDD|eMMC|M\.?2))", re.I)
@@ -99,7 +102,13 @@ def parse_specs(title: str, description: str = "") -> Specs:
         elif m.group(6):
             s.cpu = f"Core Ultra {m.group(6)} {m.group(7).upper()}"
 
-    m = _RAM_RE.search(text) or _RAM_BARE_RE.search(text)
+    m = _RAM_LABEL_RE.search(text)
+    if m:
+        s.ram_gb = int(m.group(1))
+    m = _SSD_LABEL_RE.search(text)
+    if m:
+        s.ssd_gb = int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000
+    m = None if s.ram_gb else (_RAM_RE.search(text) or _RAM_BARE_RE.search(text))
     if m:
         s.ram_gb = int(m.group(1))
     else:
@@ -115,7 +124,7 @@ def parse_specs(title: str, description: str = "") -> Specs:
     if m and s.ssd_gb is None:
         s.ssd_gb = int(m.group(1))
 
-    m = _SSD_RE.search(text)
+    m = None if s.ssd_gb else _SSD_RE.search(text)
     if m:
         s.ssd_gb = int(m.group(1)) if m.group(1) else int(m.group(2)) * 1000
     elif s.ssd_gb is None and s.ram_gb is not None:

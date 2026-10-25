@@ -40,6 +40,25 @@ Beispielausgabe von `scan`:
   139.00 € |  3.14 | X1 Yoga Gen 2    i5-7300U             8GB/128GB   14.0" | shop       | https://...
 ```
 
+## Suchprofile
+
+`config/profiles.yaml` legt fest, was überhaupt als Treffer zählt. Mitgeliefert:
+
+- **dev**: Entwickler-Workstation für mehrere Agenten, IntelliJ, Docker und viele Browser-Tabs.
+  Mindestens 32 GB RAM, 512 GB SSD, CPU ab etwa 12000 PassMark (i7 ab 11. Generation, Ryzen 7
+  PRO 5000, Core Ultra 7) oder, falls die CPU nicht in der Tabelle steht, i7/Ryzen 7-Klasse.
+  Maximal 1000 €, maximal 14 Tage alt.
+- **office**: einfacher Büro-Laptop, 16 GB, 256 GB, bis 300 €. Der T580-Deal passt hier hinein.
+
+```bash
+thinkpad-deals scan --profile dev        # Benachrichtigung nur für Profil-Treffer
+thinkpad-deals top --profile dev         # aktuelle Treffer aus der Historie
+```
+
+Im Workflow wählt die Repository-Variable `PROFILE` das Profil, Standard ist `dev`. Der Report
+beginnt dann mit dem Abschnitt "Profil 'dev'" und zeigt nur Angebote, die in den letzten 14 Tagen
+veröffentlicht oder gesehen wurden.
+
 ## Einen neuen Shop anbinden
 
 1. Listen-URL des Shops im Browser öffnen (Kategorie "Lenovo Notebooks", nach Preis sortiert).
@@ -52,9 +71,9 @@ Beispielausgabe von `scan`:
    `thinkpad-deals parse "<Titel>"` zeigt, was der Parser erkennt. Regexe stehen in
    `thinkpad_deals/parse.py`.
 
-Der Händler aus dem Deal (hardware-online-shop.de) ist in `sources.yaml` bereits als Vorlage
-angelegt, aber deaktiviert: die Selektoren sind Platzhalter, weil der Shop aus der
-Entwicklungsumgebung nicht erreichbar war. Einmal `calibrate` laufen lassen, eintragen, fertig.
+Ohne eigenen Rechner geht das über den Workflow `probe-page` (Actions > probe-page > Run
+workflow): URLs eintragen, der Runner lädt die Seiten, legt HTML und Selektor-Vorschläge im
+Branch `probe-data` ab und zeigt die Vorschläge in der Zusammenfassung des Laufs.
 
 ## Wie die Bewertung funktioniert
 

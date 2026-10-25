@@ -70,6 +70,17 @@ class GenericShop:
 
     def fetch(self, fetcher: Fetcher) -> Iterable[Listing]:
         for start in self.urls:
+            if "{page}" in start:
+                # Seitenzaehlung per Platzhalter: .../lenovo?page={page} -> 1..max_pages,
+                # Abbruch, sobald eine Seite keine Karten mehr liefert.
+                for n in range(1, self.max_pages + 1):
+                    url = start.replace("{page}", str(n))
+                    html = fetcher.get(url, render=self.render, check_robots=not self.ignore_robots)
+                    listings, _ = self.parse(html, page_url=url)
+                    if not listings and not self._has_cards(html):
+                        break
+                    yield from listings
+                continue
             url: Optional[str] = start
             pages = 0
             while url and pages < self.max_pages:
@@ -77,6 +88,9 @@ class GenericShop:
                 listings, url = self.parse(html, page_url=url)
                 yield from listings
                 pages += 1
+
+    def _has_cards(self, html: str) -> bool:
+        return bool(BeautifulSoup(html, "lxml").select_one(self.sel_item))
 
     def parse(self, html: str, page_url: str = "") -> tuple[list[Listing], Optional[str]]:
         soup = BeautifulSoup(html, "lxml")
