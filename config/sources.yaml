@@ -5,12 +5,14 @@ cache_ttl_s: 1800     # geholte Seiten 30 min lokal cachen (schont die Shops bei
 
 sources:
   # 1) Strukturiert und offiziell: die mydealz-RSS-Feeds.
+  #    /rss/suche?q=... existiert nicht (404). Gruppen-Feeds und der Feed aller neuen
+  #    Deals funktionieren; Nicht-ThinkPads werden per Titel herausgefiltert.
   - name: mydealz
     kind: mydealz_rss
     feeds:
       - https://www.mydealz.de/rss/gruppe/lenovo-thinkpad
-      - https://www.mydealz.de/rss/suche?q=thinkpad
-      - https://www.mydealz.de/rss/suche?q=refurbished+notebook
+      - https://www.mydealz.de/rss/gruppe/lenovo-laptops
+      - https://www.mydealz.de/rss/neu
 
   # 2) Der Haendler aus dem Deal. Die Selektoren sind Platzhalter und muessen
   #    einmal mit `thinkpad-deals calibrate <URL>` ermittelt werden, weil der
@@ -34,9 +36,11 @@ sources:
   #    eBay verbietet /sch/ in seiner robots.txt fuer alle Bots. ignore_robots: true heisst: du nimmst
   #    das fuer deinen privaten Gebrauch (3 Seiten alle 3 Stunden) bewusst in Kauf. Sauberer waere die
   #    eBay Browse API mit eigenem Developer-Key.
+  #    Stand 2026-10: eBay antwortet GitHub-Actions-Runnern mit 403 (Bot-Schutz). Deshalb aus.
+  #    Lokal auf dem eigenen Rechner kann es klappen; sonst eBay Browse API.
   - name: ebay
     kind: shop
-    enabled: true
+    enabled: false
     ignore_robots: true
     urls:
       - "https://www.ebay.de/sch/i.html?_nkw=thinkpad+16gb&LH_BIN=1&LH_ItemCondition=2500%7C3000&_sop=15&_udhi=300"

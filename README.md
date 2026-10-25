@@ -104,8 +104,9 @@ erreichen können. Für reines Sammeln ist Actions die robustere und billigere V
 - **Refurbisher-Shops**: hardware-online-shop.de, AfB, Luxnote, ESM Computer, lapstore, GreenPanda,
   Harlander. Jeweils die Lenovo-Kategorie als `kind: shop` anbinden. Gutschein-Codes stehen oft
   nur im Warenkorb oder in Newslettern; die Historie fängt den Normalpreis trotzdem ein.
-- **eBay-Suche**: ist als Quelle vorkonfiguriert (Sofortkauf, generalüberholt, Preis aufsteigend).
-  Für dauerhafte Nutzung ist die eBay Browse API sauberer als HTML.
+- **eBay-Suche**: als Quelle vorkonfiguriert, aber deaktiviert. eBay beantwortet Anfragen von
+  GitHub-Actions-Runnern mit 403 und sperrt `/sch/` per robots.txt. Lokal kann es laufen
+  (`enabled: true`), sauber ist nur die eBay Browse API mit eigenem Key.
 - **Geizhals/Idealo** listen Gebrauchtware, verbieten Scraping aber in den AGB. Besser deren
   Preisalarme nutzen oder weglassen.
 
