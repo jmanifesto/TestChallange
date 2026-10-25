@@ -40,6 +40,18 @@ Beispielausgabe von `scan`:
   139.00 € |  3.14 | X1 Yoga Gen 2    i5-7300U             8GB/128GB   14.0" | shop       | https://...
 ```
 
+## Steuerung ohne Code: `config/control.json`
+
+Alles, was man im Alltag ändert, steht in einer Datei: aktive Quellen und deren Listen-URLs,
+Seiten je Liste, Profil und dessen Grenzwerte, Suchwörter, Ausschlüsse, Scan-Intervall,
+Aufbewahrung der Historie, Push-Schwelle und ntfy-Topic. Der Scanner liest sie bei jedem Lauf und
+legt sie über `sources.yaml` und `profiles.yaml`. Der Workflow weckt stündlich und scannt nur,
+wenn `interval_hours` abgelaufen ist.
+
+Bearbeitet wird sie entweder direkt auf GitHub oder über die private Steuerseite (Claude-Artefakt
+"ThinkPad Radar"), die mit einem Fine-grained Token (Repository Scrapper, Contents und Actions
+Read/write) die Datei liest, speichert und auf Wunsch sofort einen Scan startet.
+
 ## Suchprofile
 
 `config/profiles.yaml` legt fest, was überhaupt als Treffer zählt. Mitgeliefert:
