@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-26 06:13 UTC, 178 Angebote in der Historie.
+Stand: 2026-10-26 13:11 UTC, 183 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -9,8 +9,18 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
-| 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
+| 929 € | 3.63 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
+
+## Neu in diesem Lauf (5)
+
+| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
+|---:|---:|---|---|---|---|---|---|
+| 329 € | 4.0 | E14 Gen 2 | i5-1135G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-e14-gen-2-intel/de-39.839-c/) |
+| 379 € | 3.67 | T14 Gen 1 | Ryzen 5 PRO 4650U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-1-amd/de-41.807-b/) |
+| 259 € | 2.69 | T480 | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t480/de-33.007-b/) |
+| 639 € | 2.34 | T15 Gen 2 | i5-1145G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-2/de-41.047-b/) |
+| 369 € | - | L15 Gen 1 | i3-10110U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l15-gen-1/de-45.652-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -27,7 +37,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 199 € | 4.6 | L490 | i5-8265U | 16/500 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-gut-lenovo-thinkpad-l490-14-fhd-i5-8265u-16-gb-ram-500-gb-ssd-qwertz-windows-11-pro-fur-199-eur-2813837) |
 | 415 € | 4.59 | X1 Yoga Gen 6 | i7-1185G7 | 32/512 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-lenovo-thinkpad-x1-yoga-gen-6-14-2-in-1-laptop-intel-core-i7-1185g7-32gb-ram-512gb-ssd-intel-iris-xe-w11-pro-2842350) |
 | 349 € | 4.54 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-amd/de-43.539-b/) |
-| 352 € | 4.51 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
 | 129 € | 4.5 | X270 | i7-6600U | 16/256 GB | 12.5 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x270-12-i7-6600u-16-gb-ram-256-gb-ssd-708916) |
 | 202 € | 4.49 | T495 | Ryzen 7 PRO 3700U | 16/256 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t495-14-256gb-amd-ryzen-7-pro-3700u-230-ghz-16gb-qwertz-2859127) |
 | 293 € | 4.49 | L14 Gen 2 | i7-1165G7 | 16/500 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-gen-2-intel-16gb-ram-500gb-ssd-intel-core-i7-1165g7-2822161) |
@@ -41,6 +50,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 429 € | 4.14 | L15 Gen 2 | Ryzen 5 PRO 5650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l15-gen-2-amd/de-51.345-a/) |
 | 219 € | 4.14 | T14 Gen 1 | i5-10310U | 16/128 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-1-14-fhd-laptop-core-i5-10310u-16gb-ram-128gb-ssd-ips-mattes-display-refurbished-notebook-gut-2814319) |
 | 149 € | 4.14 | X13 | i5-10310U | 8/256 GB | 13.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-x13-13-laptop-intel-i5-10310u-8gb-ram-m2-ssd-2x-usb-c-tb3-refurbished-2816091) |
+| 343 € | 4.1 | L14 Gen 2 | i7-1165G7 | 16/500 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-intel-i7-1165g7-16gb-ram-50gb-m2-ssd-2x-usb-c-1x-tb4-rj45-lan-refurbished-afb-shop-summersale-2819836) |
 
 ## Bis 250 € mit 16 GB
 
