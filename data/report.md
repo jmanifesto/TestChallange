@@ -1,8 +1,8 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-26 13:11 UTC, 183 Angebote in der Historie.
+Stand: 2026-10-26 19:19 UTC, 184 Angebote in der Historie.
 
-## Profil 'dev' (3 aktuelle Treffer)
+## Profil 'dev' (4 aktuelle Treffer)
 
 Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. Mindestens 32 GB RAM, i7-Klasse oder staerker, grosse SSD.
 
@@ -10,17 +10,14 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 |---:|---:|---|---|---|---|---|---|
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 929 € | 3.63 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
+| 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (5)
+## Neu in diesem Lauf (1)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 329 € | 4.0 | E14 Gen 2 | i5-1135G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-e14-gen-2-intel/de-39.839-c/) |
-| 379 € | 3.67 | T14 Gen 1 | Ryzen 5 PRO 4650U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-1-amd/de-41.807-b/) |
-| 259 € | 2.69 | T480 | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t480/de-33.007-b/) |
-| 639 € | 2.34 | T15 Gen 2 | i5-1145G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-2/de-41.047-b/) |
-| 369 € | - | L15 Gen 1 | i3-10110U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l15-gen-1/de-45.652-c/) |
+| 239 € | 2.86 | L490 | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l490/de-47.642-a/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
