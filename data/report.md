@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-25 22:33 UTC, 178 Angebote in der Historie.
+Stand: 2026-10-26 06:13 UTC, 178 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -11,12 +11,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
-
-## Neu in diesem Lauf (1)
-
-| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
-|---:|---:|---|---|---|---|---|---|
-| 202 € | 4.49 | T495 | Ryzen 7 PRO 3700U | 16/256 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t495-14-256gb-amd-ryzen-7-pro-3700u-230-ghz-16gb-qwertz-2859127) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -33,6 +27,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 199 € | 4.6 | L490 | i5-8265U | 16/500 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-gut-lenovo-thinkpad-l490-14-fhd-i5-8265u-16-gb-ram-500-gb-ssd-qwertz-windows-11-pro-fur-199-eur-2813837) |
 | 415 € | 4.59 | X1 Yoga Gen 6 | i7-1185G7 | 32/512 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-lenovo-thinkpad-x1-yoga-gen-6-14-2-in-1-laptop-intel-core-i7-1185g7-32gb-ram-512gb-ssd-intel-iris-xe-w11-pro-2842350) |
 | 349 € | 4.54 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-amd/de-43.539-b/) |
+| 352 € | 4.51 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
 | 129 € | 4.5 | X270 | i7-6600U | 16/256 GB | 12.5 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x270-12-i7-6600u-16-gb-ram-256-gb-ssd-708916) |
 | 202 € | 4.49 | T495 | Ryzen 7 PRO 3700U | 16/256 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t495-14-256gb-amd-ryzen-7-pro-3700u-230-ghz-16gb-qwertz-2859127) |
 | 293 € | 4.49 | L14 Gen 2 | i7-1165G7 | 16/500 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-gen-2-intel-16gb-ram-500gb-ssd-intel-core-i7-1165g7-2822161) |
@@ -40,7 +35,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 179 € | 4.47 | T580 | i5-8350U | 16/256 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t580-156-zoll-laptop-mit-windows-11-intel-i5-8350u-16gb-ddr4-ram-256gb-ssd-2x-usb-c-hdmi-refurbished-notebook-2858770) |
 | 179 € | 4.41 | E480 | i5-8250U | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-e480-14-i5-8250u-16-gb-ram-256-gb-ssd) |
 | 299 € | 4.36 | L14 Gen 2 | i7-1165G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-ab-269eur-intel-i7-1165g7-16gb-ram-lte-256gb-m2-ssd-2x-usb-c-1x-tb4-lan-refurbished-lap-works-2829525) |
-| 371 € | 4.33 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
 | 289 € | 4.22 | L14 Gen 2 | i5-1135G7 | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l14-gen2-14-i5-1135g7-16-gb-ram-256-gb-ssd) |
 | 199 € | 4.17 | T580 | i5-8350U | 16/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t580-15-6-i5-8350u-16-gb-ram-256-gb-ssd-713016) |
 | 329 € | 4.15 | T14 Gen 2 | i5-1145G7 | 16/512 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-2-14-laptop-ab-299eur-400-nits-1920x1080-ips-intel-i5-1145g7-16gb-ram-512gb-m2-ssd-2x-usb-c-tb-4-refubished-2835261) |
