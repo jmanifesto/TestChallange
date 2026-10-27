@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-27 10:43 UTC, 189 Angebote in der Historie.
+Stand: 2026-10-27 16:49 UTC, 193 Angebote in der Historie.
 
 ## Profil 'dev' (4 aktuelle Treffer)
 
@@ -9,19 +9,18 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
-| 930 € | 3.62 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
+| 933 € | 3.61 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (5)
+## Neu in diesem Lauf (4)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 269 € | 2.75 | T480s | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t480s/de-34.603-c/) |
-| 479 € | 1.91 | T15 Gen 1 | i5-10310U | 8/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-47.503-b/) |
-| 3358 € | - | P14s Gen 7 | Core Ultra 9 386H | 64/1000 GB | 14.5 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-p14s-g7-intel-core-ultra-9-386h-64gb-ram-1tb-ssd-rtx-pro-1000-blackwell-de-2859803) |
-| 2667 € | - | P14s Gen 7 | Core Ultra 9 386H | 64/1000 GB |  | mydealz | [Link](https://www.mydealz.de/deals/amazon-marketplace-lenovo-thinkpad-p14s-gen-7-21xj005sge-core-ultra-9-386h-rtx-pro-1000-8gb-64gb1tb-145-3k-120hz-fur-266669-eur-2859763) |
-| 499 € | - | ? | ? | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p1-gen-2-15-6-xeon-e-2276m-32-gb-1024-gb-ssd) |
+| 249 € | 3.78 | X1 Yoga Gen 4 | i5-8365U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd-711308) |
+| 169 € | 2.6 | T570 | i5-7200U | 8/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t570-15-i5-7200u-8-gb-ram-256-gb-ssd) |
+| 379 € | 2.15 | T15 Gen 1 | i5-10310U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-38.517-b/) |
+| 109 € | - | W520 | i7-2860QM | 8/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-w520-15-i7-2860qm-8-gb-ram-256-gb-ssd-709324) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -71,4 +70,5 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 219 € | 4.14 | T14 Gen 1 | i5-10310U | 16/128 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-1-14-fhd-laptop-core-i5-10310u-16gb-ram-128gb-ssd-ips-mattes-display-refurbished-notebook-gut-2814319) |
 | 235 € | 4.0 | T14 | i5-10210U | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-14-laptop-ab-239eur-intel-i5-10210u-16gb-ram-aufrustbar-m2-ssd-2x-usb-c-tb3-refurbished-gut-bis-hervorragend-2837430) |
 | 239 € | 3.83 | X1 Yoga Gen 3 | i5-8350U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-3rd-14-i5-8350u-16-gb-ram-256-gb-ssd) |
+| 249 € | 3.78 | X1 Yoga Gen 4 | i5-8365U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd-711308) |
 | 249 € | 3.72 | T480s | i5-8350U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t480s-14-i5-8350u-16-gb-ram-256-gb-ssd-711249) |
