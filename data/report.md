@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-27 05:08 UTC, 184 Angebote in der Historie.
+Stand: 2026-10-27 10:43 UTC, 189 Angebote in der Historie.
 
 ## Profil 'dev' (4 aktuelle Treffer)
 
@@ -12,6 +12,16 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 930 € | 3.62 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
+
+## Neu in diesem Lauf (5)
+
+| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
+|---:|---:|---|---|---|---|---|---|
+| 269 € | 2.75 | T480s | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t480s/de-34.603-c/) |
+| 479 € | 1.91 | T15 Gen 1 | i5-10310U | 8/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-47.503-b/) |
+| 3358 € | - | P14s Gen 7 | Core Ultra 9 386H | 64/1000 GB | 14.5 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-p14s-g7-intel-core-ultra-9-386h-64gb-ram-1tb-ssd-rtx-pro-1000-blackwell-de-2859803) |
+| 2667 € | - | P14s Gen 7 | Core Ultra 9 386H | 64/1000 GB |  | mydealz | [Link](https://www.mydealz.de/deals/amazon-marketplace-lenovo-thinkpad-p14s-gen-7-21xj005sge-core-ultra-9-386h-rtx-pro-1000-8gb-64gb1tb-145-3k-120hz-fur-266669-eur-2859763) |
+| 499 € | - | ? | ? | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p1-gen-2-15-6-xeon-e-2276m-32-gb-1024-gb-ssd) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
