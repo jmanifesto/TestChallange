@@ -1,8 +1,8 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-27 16:49 UTC, 193 Angebote in der Historie.
+Stand: 2026-10-27 21:20 UTC, 193 Angebote in der Historie.
 
-## Profil 'dev' (4 aktuelle Treffer)
+## Profil 'dev' (3 aktuelle Treffer)
 
 Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. Mindestens 32 GB RAM, i7-Klasse oder staerker, grosse SSD.
 
@@ -10,17 +10,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 |---:|---:|---|---|---|---|---|---|
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 933 € | 3.61 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
-| 724 € | 3.13 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
-
-## Neu in diesem Lauf (4)
-
-| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
-|---:|---:|---|---|---|---|---|---|
-| 249 € | 3.78 | X1 Yoga Gen 4 | i5-8365U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd-711308) |
-| 169 € | 2.6 | T570 | i5-7200U | 8/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t570-15-i5-7200u-8-gb-ram-256-gb-ssd) |
-| 379 € | 2.15 | T15 Gen 1 | i5-10310U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-38.517-b/) |
-| 109 € | - | W520 | i7-2860QM | 8/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-w520-15-i7-2860qm-8-gb-ram-256-gb-ssd-709324) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
