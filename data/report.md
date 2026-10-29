@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-29 00:56 UTC, 201 Angebote in der Historie.
+Stand: 2026-10-29 07:05 UTC, 202 Angebote in der Historie.
 
 ## Profil 'dev' (4 aktuelle Treffer)
 
@@ -17,7 +17,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 399 € | 3.52 | T14 Gen 1 | Ryzen 5 PRO 4650U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-1-amd/de-39.504-b/) |
+| 239 € | 2.85 | X380 | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x380-yoga/de-34.526-b/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
