@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-10-31 17:44 UTC, 207 Angebote in der Historie.
+Stand: 2026-10-31 21:34 UTC, 208 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -16,7 +16,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 359 € | - | L15 Gen 1 | i3-10110U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l15-gen-1/de-42.092-b/) |
+| 99 € | - | T520 | i5-2520M | 8/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t520-15-i5-2520m-8-gb-ram-256-gb-ssd) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
