@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-01 15:07 UTC, 209 Angebote in der Historie.
+Stand: 2026-11-01 19:39 UTC, 210 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -16,7 +16,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 271 € | 2.8 | T490s | i5-8365U | 8/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-tp490s-8365u/) |
+| 109 € | - | X240 | i7-4600U | 8/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x240-12-i7-4600u-8-gb-ram-256-gb-ssd-708951) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -38,8 +38,8 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 293 € | 4.49 | L14 Gen 2 | i7-1165G7 | 16/500 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-gen-2-intel-16gb-ram-500gb-ssd-intel-core-i7-1165g7-2822161) |
 | 119 € | 4.47 | E470 | i5-7200U | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-e470-14-i5-7200u-16-gb-ram-256-gb-ssd-709719) |
 | 179 € | 4.47 | T580 | i5-8350U | 16/256 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t580-156-zoll-laptop-mit-windows-11-intel-i5-8350u-16gb-ddr4-ram-256gb-ssd-2x-usb-c-hdmi-refurbished-notebook-2858770) |
-| 360 € | 4.43 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
 | 179 € | 4.41 | E480 | i5-8250U | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-e480-14-i5-8250u-16-gb-ram-256-gb-ssd) |
+| 364 € | 4.4 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
 | 299 € | 4.36 | L14 Gen 2 | i7-1165G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-ab-269eur-intel-i7-1165g7-16gb-ram-lte-256gb-m2-ssd-2x-usb-c-1x-tb4-lan-refurbished-lap-works-2829525) |
 | 289 € | 4.22 | L14 Gen 2 | i5-1135G7 | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l14-gen2-14-i5-1135g7-16-gb-ram-256-gb-ssd) |
 | 199 € | 4.17 | T580 | i5-8350U | 16/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t580-15-6-i5-8350u-16-gb-ram-256-gb-ssd-713016) |
