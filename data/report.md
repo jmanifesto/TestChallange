@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-03 15:07 UTC, 219 Angebote in der Historie.
+Stand: 2026-11-03 20:59 UTC, 219 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -11,17 +11,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 917 € | 3.67 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
-
-## Neu in diesem Lauf (6)
-
-| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
-|---:|---:|---|---|---|---|---|---|
-| 119 € | 4.47 | E470 | i5-7200U | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-e470-14-i5-7200u-16-gb-ram-256-gb-ssd-709718) |
-| 209 € | 3.23 | L380 | i5-8350U | 8/256 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l380-13-3-i5-8350u-8-gb-256-gb-ssd-701678) |
-| 449 € | 3.0 | X13 Gen 2 | i5-1145G7 | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x13-yoga-gen-2/de-43.869-b/) |
-| 249 € | 2.77 | T490 | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t490/de-33.348-b/) |
-| 179 € | 2.69 | X1 Carbon Gen 5 | i5-7200U | 8/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-carbon-5th-14-i5-7200u-8-gb-ram-256-gb-ssd-713917) |
-| 119 € | - | T540p | i5-4300M | 8/128 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t540p-15-6-i5-4300m-8-gb-ram-128-gb-ssd) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
