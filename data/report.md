@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-08 15:12 UTC, 239 Angebote in der Historie.
+Stand: 2026-11-08 19:41 UTC, 240 Angebote in der Historie.
 
 ## Profil 'dev' (5 aktuelle Treffer)
 
@@ -18,7 +18,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 559 € | 2.66 | X1 Yoga Gen 6 | i7-1185G7 | 16/512 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-gen-6-14-i7-1185g7-16-gb-ram-512-gb-ssd) |
+| 199 € | 3.41 | T490s | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t490s/de-33.504-b/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
