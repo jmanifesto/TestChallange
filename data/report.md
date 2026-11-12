@@ -1,23 +1,28 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-12 11:07 UTC, 254 Angebote in der Historie.
+Stand: 2026-11-12 18:56 UTC, 261 Angebote in der Historie.
 
-## Profil 'dev' (4 aktuelle Treffer)
+## Profil 'dev' (3 aktuelle Treffer)
 
 Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. Mindestens 32 GB RAM, i7-Klasse oder staerker, grosse SSD.
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
 | 749 € | 4.69 | ? | i7-12800H | 32/512 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-gut-lenovo-thinkpad-p15v-gen-3-mobile-workstation-156-fhd-ips-i7-12800h-32gb-ddr5-ram-512gb-nvme-ssd-win11-pro-2865686) |
-| 540 € | 4.03 | P15 Gen 1 | i7-10850H | 32/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (1)
+## Neu in diesem Lauf (7)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 79 € | 3.97 | X260 | i5-6300U | 8/256 GB | 12.5 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x260-12-5-i5-6300u-8-gb-256-gb-ssd-700098) |
+| 259 € | 3.84 | X390 | i5-8365U | 16/512 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x390-13-3-i5-8365u-16-gb-512-gb-nvme-703273) |
+| 129 € | 3.28 | X1 Yoga Gen 2 | i5-7300U | 8/128 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-2nd-14-i5-7300u-8-gb-ram-128-gb-ssd-713321) |
+| 469 € | 2.41 | T15 Gen 1 | i7-10610U | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-47.505-b/) |
+| 1199 € | 2.21 | X1 Carbon Gen 11 | i5-1345U | 32/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x1-carbon-gen-11/de-50.508-a/) |
+| 149 € | - | L380 | i3-8130U | 8/256 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l380-13-3-i3-8130u-8-gb-256-gb-ssd) |
+| 149 € | - | A285 | ? | 16/512 GB | 12.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-a285-12-6-ryzen-5-pro-2500u-16-gb-ram-512-gb-ssd) |
+| 129 € | - | T495 | ? | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t495-14-ryzen-3-pro-3300u-16-gb-ram-256-gb-ssd-711521) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -29,7 +34,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 177 € | 5.2 | T14 Gen 1 | i5-10310U | 16/512 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-1-14-fhd-intel-core-i5-10310u-16gb-ram-512gb-m2-ssd-tb3-wi-fi-6-win11-pro-refurbished-fur-177eur-ebay-2824559) |
 | 269 € | 5.07 | L13 Gen 2 | i5-1135G7 | 16/1000 GB | 13.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l13-g2-13-laptop-ab-269eur-intel-i5-1135g7-bzw-1145g7-16gb-ram-256gb-bis-1tb-m2-ssd-tb-4-refurbished-zustand-b-2852729) |
 | 99 € | 4.97 | X260 | i5-6300U | 16/256 GB | 12.5 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x260-12-5-i5-6300u-16-gb-ram-256-gb-ssd-706018) |
-| 250 € | 4.94 | T15 Gen 2 | i5-1145G7 | 16/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t15p-g2-1145g7/) |
 | 249 € | 4.87 | L14 Gen 2 | i5-1145G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-ab-249eur-intel-i5-1145g7-16gb-ram-lte-256gb-m2-ssd-backlit-2x-usb-c-1x-tb4-lan-refurbished-gut-2846364) |
 | 199 € | 4.72 | T14 Gen 1 | i5-10310U | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-14-laptop-ab-199eur-intel-i5-10310u-touchscreen-16gb-ram-m2-256gb-ssd-2x-usb-c-tb3-refurbished-storedeals-2844264) |
 | 349 € | 4.71 | T14 Gen 1 | Ryzen 5 PRO 4650U | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-1-amd/de-41.670-b/) |
@@ -48,6 +52,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 379 € | 4.25 | T14 Gen 1 | Ryzen 5 PRO 4650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-1-amd/de-41.807-b/) |
 | 289 € | 4.22 | L14 Gen 2 | i5-1135G7 | 16/256 GB |  | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l14-gen2-14-i5-1135g7-16-gb-ram-256-gb-ssd) |
 | 320 € | 4.19 | T14s Gen 1 | Ryzen 5 PRO 4650U | 8/256 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/) |
+| 199 € | 4.17 | T580 | i5-8350U | 16/256 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t580-15-6-i5-8350u-16-gb-ram-256-gb-ssd-713016) |
 
 ## Bis 250 € mit 16 GB
 
@@ -56,7 +61,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 139 € | 5.52 | X1 Yoga Gen 4 | i5-8365U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpadx1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd) |
 | 177 € | 5.2 | T14 Gen 1 | i5-10310U | 16/512 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-1-14-fhd-intel-core-i5-10310u-16gb-ram-512gb-m2-ssd-tb3-wi-fi-6-win11-pro-refurbished-fur-177eur-ebay-2824559) |
 | 99 € | 4.97 | X260 | i5-6300U | 16/256 GB | 12.5 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x260-12-5-i5-6300u-16-gb-ram-256-gb-ssd-706018) |
-| 250 € | 4.94 | T15 Gen 2 | i5-1145G7 | 16/512 GB | 15.6 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t15p-g2-1145g7/) |
 | 249 € | 4.87 | L14 Gen 2 | i5-1145G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-ab-249eur-intel-i5-1145g7-16gb-ram-lte-256gb-m2-ssd-backlit-2x-usb-c-1x-tb4-lan-refurbished-gut-2846364) |
 | 199 € | 4.72 | T14 Gen 1 | i5-10310U | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-14-laptop-ab-199eur-intel-i5-10310u-touchscreen-16gb-ram-m2-256gb-ssd-2x-usb-c-tb3-refurbished-storedeals-2844264) |
 | 202 € | 4.49 | T495 | Ryzen 7 PRO 3700U | 16/256 GB |  | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t495-14-256gb-amd-ryzen-7-pro-3700u-230-ghz-16gb-qwertz-2859127) |
