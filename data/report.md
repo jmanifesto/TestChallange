@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-12 18:56 UTC, 261 Angebote in der Historie.
+Stand: 2026-11-13 00:23 UTC, 261 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -11,18 +11,6 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 749 € | 4.69 | ? | i7-12800H | 32/512 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-gut-lenovo-thinkpad-p15v-gen-3-mobile-workstation-156-fhd-ips-i7-12800h-32gb-ddr5-ram-512gb-nvme-ssd-win11-pro-2865686) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
-
-## Neu in diesem Lauf (7)
-
-| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
-|---:|---:|---|---|---|---|---|---|
-| 259 € | 3.84 | X390 | i5-8365U | 16/512 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x390-13-3-i5-8365u-16-gb-512-gb-nvme-703273) |
-| 129 € | 3.28 | X1 Yoga Gen 2 | i5-7300U | 8/128 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-x1-yoga-2nd-14-i5-7300u-8-gb-ram-128-gb-ssd-713321) |
-| 469 € | 2.41 | T15 Gen 1 | i7-10610U | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-1/de-47.505-b/) |
-| 1199 € | 2.21 | X1 Carbon Gen 11 | i5-1345U | 32/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x1-carbon-gen-11/de-50.508-a/) |
-| 149 € | - | L380 | i3-8130U | 8/256 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l380-13-3-i3-8130u-8-gb-256-gb-ssd) |
-| 149 € | - | A285 | ? | 16/512 GB | 12.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-a285-12-6-ryzen-5-pro-2500u-16-gb-ram-512-gb-ssd) |
-| 129 € | - | T495 | ? | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t495-14-ryzen-3-pro-3300u-16-gb-ram-256-gb-ssd-711521) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
