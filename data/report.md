@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-14 17:08 UTC, 266 Angebote in der Historie.
+Stand: 2026-11-14 21:29 UTC, 267 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -16,7 +16,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 469 € | 1.77 | T14s Gen 1 | i5-10210U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-intel/de-33.520-b/) |
+| 379 € | - | E14 Gen 3 | Ryzen 5 5500U | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-e14-gen-3-amd/de-41.593-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
