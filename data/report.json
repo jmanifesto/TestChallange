@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-14T10:29:52.760958+00:00",
- "history_count": 265,
+ "generated_at": "2026-11-14T17:08:09.762685+00:00",
+ "history_count": 266,
  "profile": "dev",
  "profile_description": "Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. Mindestens 32 GB RAM, i7-Klasse oder staerker, grosse SSD.",
  "sections": [
@@ -24,7 +24,7 @@
      "cpu_score": 27000,
      "baseline_price": null,
      "first_seen": "2026-11-06T09:23:44.834462+00:00",
-     "last_seen": "2026-11-14T10:29:35.485749+00:00",
+     "last_seen": "2026-11-14T17:07:50.527708+00:00",
      "label": ""
     },
     {
@@ -39,30 +39,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd",
      "title": "Lenovo ThinkPad P15 Gen 2i | 15,6\" | i7-11850H | 32 GB RAM | 1024 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:40.577896+00:00",
+     "published": "2026-11-14T17:07:57.051200+00:00",
      "cpu_score": 21500,
      "baseline_price": null,
      "first_seen": "2026-10-25T16:22:18.228399+00:00",
-     "last_seen": "2026-11-14T10:29:40.592678+00:00",
-     "label": ""
-    },
-    {
-     "price": 699.99,
-     "value_score": 3.23,
-     "model": "P15 Gen 1",
-     "cpu": "i7-10850H",
-     "ram_gb": 32,
-     "ssd_gb": 512,
-     "screen_in": 15.6,
-     "grade": null,
-     "source": "refurbed",
-     "url": "https://www.refurbed.de/p/lenovo-thinkpad-p15-g1-10850h/",
-     "title": "Lenovo ThinkPad P15 G1 | i7-10850H | 15.6\"",
-     "published": "2026-11-14T10:29:46.721164+00:00",
-     "cpu_score": 13000,
-     "baseline_price": null,
-     "first_seen": "2026-10-25T16:22:24.759947+00:00",
-     "last_seen": "2026-11-14T10:29:46.730285+00:00",
+     "last_seen": "2026-11-14T17:07:57.082869+00:00",
      "label": ""
     },
     {
@@ -91,19 +72,19 @@
    "title": "Neu in diesem Lauf",
    "rows": [
     {
-     "price": 529.0,
-     "value_score": 2.16,
-     "model": "T14s Gen 2",
-     "cpu": "i5-1135G7",
+     "price": 469.0,
+     "value_score": 1.77,
+     "model": "T14s Gen 1",
+     "cpu": "i5-10210U",
      "ram_gb": 8,
      "ssd_gb": 250,
      "screen_in": null,
      "grade": null,
      "source": "afb",
-     "url": "https://www.afbshop.de/lenovo-thinkpad-t14s-gen-2-intel/de-35.209-a/",
-     "title": "Lenovo Thinkpad T14s Gen 2 Intel",
-     "published": "2026-11-14T10:29:52.722998+00:00",
-     "cpu_score": 10000,
+     "url": "https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-intel/de-33.520-b/",
+     "title": "Lenovo ThinkPad T14s Gen 1 Intel",
+     "published": "2026-11-14T17:08:09.604682+00:00",
+     "cpu_score": 6500,
      "label": ""
     }
    ]
@@ -124,11 +105,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpadx1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd",
      "title": "Lenovo ThinkPadX1 Yoga 4th | 14\" | i5-8365U | 16 GB RAM | 256 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:41.487733+00:00",
+     "published": "2026-11-14T17:07:58.513734+00:00",
      "cpu_score": 6300,
      "baseline_price": 249.0,
      "first_seen": "2026-10-25T16:22:19.456599+00:00",
-     "last_seen": "2026-11-14T10:29:41.507390+00:00",
+     "last_seen": "2026-11-14T17:07:58.523829+00:00",
      "label": ""
     },
     {
@@ -147,7 +128,7 @@
      "cpu_score": 14500,
      "baseline_price": null,
      "first_seen": "2026-09-21T16:38:47+02:00",
-     "last_seen": "2026-11-14T10:29:35.553613+00:00",
+     "last_seen": "2026-11-14T17:07:50.580651+00:00",
      "label": ""
     },
     {
@@ -166,7 +147,7 @@
      "cpu_score": 15500,
      "baseline_price": null,
      "first_seen": "2026-07-28T13:23:20+02:00",
-     "last_seen": "2026-11-14T10:29:35.655016+00:00",
+     "last_seen": "2026-11-14T17:07:50.650650+00:00",
      "label": ""
     },
     {
@@ -185,7 +166,7 @@
      "cpu_score": 6700,
      "baseline_price": null,
      "first_seen": "2026-08-13T18:18:07+02:00",
-     "last_seen": "2026-11-14T10:29:35.620662+00:00",
+     "last_seen": "2026-11-14T17:07:50.632788+00:00",
      "label": ""
     },
     {
@@ -204,7 +185,7 @@
      "cpu_score": 10000,
      "baseline_price": null,
      "first_seen": "2026-10-12T07:37:28+02:00",
-     "last_seen": "2026-11-14T10:29:35.538653+00:00",
+     "last_seen": "2026-11-14T17:07:50.568268+00:00",
      "label": ""
     },
     {
@@ -242,7 +223,7 @@
      "cpu_score": 10100,
      "baseline_price": null,
      "first_seen": "2026-10-01T06:28:18+02:00",
-     "last_seen": "2026-11-14T10:29:35.495126+00:00",
+     "last_seen": "2026-11-14T17:07:50.535513+00:00",
      "label": ""
     },
     {
@@ -261,7 +242,7 @@
      "cpu_score": 6700,
      "baseline_price": null,
      "first_seen": "2026-09-26T07:57:51+02:00",
-     "last_seen": "2026-11-14T10:29:35.546904+00:00",
+     "last_seen": "2026-11-14T17:07:50.575310+00:00",
      "label": ""
     },
     {
@@ -299,7 +280,7 @@
      "cpu_score": 27000,
      "baseline_price": null,
      "first_seen": "2026-11-06T09:23:44.834462+00:00",
-     "last_seen": "2026-11-14T10:29:35.485749+00:00",
+     "last_seen": "2026-11-14T17:07:50.527708+00:00",
      "label": ""
     },
     {
@@ -318,7 +299,7 @@
      "cpu_score": 10100,
      "baseline_price": null,
      "first_seen": "2026-10-15T06:27:59+02:00",
-     "last_seen": "2026-11-14T10:29:35.482737+00:00",
+     "last_seen": "2026-11-14T17:07:50.525663+00:00",
      "label": ""
     },
     {
@@ -337,7 +318,7 @@
      "cpu_score": 9862,
      "baseline_price": null,
      "first_seen": "2026-09-21T19:09:04+02:00",
-     "last_seen": "2026-11-14T10:29:35.551417+00:00",
+     "last_seen": "2026-11-14T17:07:50.579099+00:00",
      "label": ""
     },
     {
@@ -356,7 +337,7 @@
      "cpu_score": 7173,
      "baseline_price": null,
      "first_seen": "2026-10-25T22:33:24.282983+00:00",
-     "last_seen": "2026-11-14T10:29:35.507918+00:00",
+     "last_seen": "2026-11-14T17:07:50.546094+00:00",
      "label": ""
     },
     {
@@ -375,7 +356,7 @@
      "cpu_score": 10500,
      "baseline_price": null,
      "first_seen": "2026-08-07T21:17:48+02:00",
-     "last_seen": "2026-11-14T10:29:35.630879+00:00",
+     "last_seen": "2026-11-14T17:07:50.640800+00:00",
      "label": ""
     },
     {
@@ -432,7 +413,7 @@
      "cpu_score": 6076,
      "baseline_price": 199.0,
      "first_seen": "2026-10-25T08:18:39+01:00",
-     "last_seen": "2026-11-14T10:29:35.518764+00:00",
+     "last_seen": "2026-11-14T17:07:50.551644+00:00",
      "label": ""
     },
     {
@@ -466,11 +447,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-e480-14-i5-8250u-16-gb-ram-256-gb-ssd",
      "title": "Lenovo ThinkPad E480 | 14 | i5-8250U | 16 GB RAM | 256 GB SSD",
-     "published": "2026-11-14T10:29:43.460852+00:00",
+     "published": "2026-11-14T17:07:59.825678+00:00",
      "cpu_score": 5900,
      "baseline_price": null,
      "first_seen": "2026-10-25T16:22:20.943008+00:00",
-     "last_seen": "2026-11-14T10:29:43.471811+00:00",
+     "last_seen": "2026-11-14T17:07:59.830792+00:00",
      "label": ""
     },
     {
@@ -485,11 +466,11 @@
      "source": "afb",
      "url": "https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-amd/de-51.369-b/",
      "title": "Lenovo ThinkPad T14s Gen 1 AMD",
-     "published": "2026-11-14T10:29:50.683361+00:00",
+     "published": "2026-11-14T17:08:07.682042+00:00",
      "cpu_score": 16500,
      "baseline_price": null,
      "first_seen": "2026-11-10T23:21:08.480325+00:00",
-     "last_seen": "2026-11-14T10:29:50.701952+00:00",
+     "last_seen": "2026-11-14T17:08:07.703806+00:00",
      "label": ""
     },
     {
@@ -508,7 +489,7 @@
      "cpu_score": 10500,
      "baseline_price": null,
      "first_seen": "2026-08-24T08:16:59+02:00",
-     "last_seen": "2026-11-14T10:29:35.605632+00:00",
+     "last_seen": "2026-11-14T17:07:50.620825+00:00",
      "label": ""
     },
     {
@@ -542,11 +523,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-l14-gen2-14-i5-1135g7-16-gb-ram-256-gb-ssd",
      "title": "Lenovo Thinkpad L14 Gen2 | 14 | i5-1135G7 | 16 GB RAM | 256 GB SSD",
-     "published": "2026-11-14T10:29:45.897154+00:00",
+     "published": "2026-11-14T17:08:02.485504+00:00",
      "cpu_score": 10000,
      "baseline_price": null,
      "first_seen": "2026-10-25T16:22:23.678253+00:00",
-     "last_seen": "2026-11-14T10:29:45.902620+00:00",
+     "last_seen": "2026-11-14T17:08:02.488761+00:00",
      "label": ""
     },
     {
@@ -561,11 +542,11 @@
      "source": "refurbed",
      "url": "https://www.refurbed.de/p/lenovo-thinkpad-t14s-g1-4650u/",
      "title": "Lenovo Thinkpad T14s G1 | Ryzen 5 PRO 4650U | 14\"",
-     "published": "2026-11-14T10:29:46.724327+00:00",
+     "published": "2026-11-14T17:08:03.551546+00:00",
      "cpu_score": 13500,
      "baseline_price": null,
      "first_seen": "2026-10-25T16:22:24.770870+00:00",
-     "last_seen": "2026-11-14T10:29:46.742774+00:00",
+     "last_seen": "2026-11-14T17:08:03.563102+00:00",
      "label": ""
     },
     {
@@ -580,11 +561,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-t580-15-6-i5-8350u-16-gb-ram-256-gb-ssd-713016",
      "title": "Lenovo ThinkPad T580 | 15,6\" | i5-8350U | 16 GB RAM | 256 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:41.485975+00:00",
+     "published": "2026-11-14T17:07:58.512328+00:00",
      "cpu_score": 6076,
      "baseline_price": 199.0,
      "first_seen": "2026-10-25T16:22:19.450248+00:00",
-     "last_seen": "2026-11-14T10:29:41.493413+00:00",
+     "last_seen": "2026-11-14T17:07:58.517835+00:00",
      "label": ""
     }
    ]
@@ -605,11 +586,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpadx1-yoga-4th-14-i5-8365u-16-gb-ram-256-gb-ssd",
      "title": "Lenovo ThinkPadX1 Yoga 4th | 14\" | i5-8365U | 16 GB RAM | 256 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:41.487733+00:00",
+     "published": "2026-11-14T17:07:58.513734+00:00",
      "cpu_score": 6300,
      "baseline_price": 249.0,
      "first_seen": "2026-10-25T16:22:19.456599+00:00",
-     "last_seen": "2026-11-14T10:29:41.507390+00:00",
+     "last_seen": "2026-11-14T17:07:58.523829+00:00",
      "label": ""
     },
     {
@@ -628,7 +609,7 @@
      "cpu_score": 6700,
      "baseline_price": null,
      "first_seen": "2026-08-13T18:18:07+02:00",
-     "last_seen": "2026-11-14T10:29:35.620662+00:00",
+     "last_seen": "2026-11-14T17:07:50.632788+00:00",
      "label": ""
     },
     {
@@ -666,7 +647,7 @@
      "cpu_score": 10100,
      "baseline_price": null,
      "first_seen": "2026-10-01T06:28:18+02:00",
-     "last_seen": "2026-11-14T10:29:35.495126+00:00",
+     "last_seen": "2026-11-14T17:07:50.535513+00:00",
      "label": ""
     },
     {
@@ -685,7 +666,7 @@
      "cpu_score": 6700,
      "baseline_price": null,
      "first_seen": "2026-09-26T07:57:51+02:00",
-     "last_seen": "2026-11-14T10:29:35.546904+00:00",
+     "last_seen": "2026-11-14T17:07:50.575310+00:00",
      "label": ""
     },
     {
@@ -704,7 +685,7 @@
      "cpu_score": 7173,
      "baseline_price": null,
      "first_seen": "2026-10-25T22:33:24.282983+00:00",
-     "last_seen": "2026-11-14T10:29:35.507918+00:00",
+     "last_seen": "2026-11-14T17:07:50.546094+00:00",
      "label": ""
     },
     {
@@ -761,7 +742,7 @@
      "cpu_score": 6076,
      "baseline_price": 199.0,
      "first_seen": "2026-10-25T08:18:39+01:00",
-     "last_seen": "2026-11-14T10:29:35.518764+00:00",
+     "last_seen": "2026-11-14T17:07:50.551644+00:00",
      "label": ""
     },
     {
@@ -776,11 +757,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-e480-14-i5-8250u-16-gb-ram-256-gb-ssd",
      "title": "Lenovo ThinkPad E480 | 14 | i5-8250U | 16 GB RAM | 256 GB SSD",
-     "published": "2026-11-14T10:29:43.460852+00:00",
+     "published": "2026-11-14T17:07:59.825678+00:00",
      "cpu_score": 5900,
      "baseline_price": null,
      "first_seen": "2026-10-25T16:22:20.943008+00:00",
-     "last_seen": "2026-11-14T10:29:43.471811+00:00",
+     "last_seen": "2026-11-14T17:07:59.830792+00:00",
      "label": ""
     },
     {
@@ -795,11 +776,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-t580-15-6-i5-8350u-16-gb-ram-256-gb-ssd-713016",
      "title": "Lenovo ThinkPad T580 | 15,6\" | i5-8350U | 16 GB RAM | 256 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:41.485975+00:00",
+     "published": "2026-11-14T17:07:58.512328+00:00",
      "cpu_score": 6076,
      "baseline_price": 199.0,
      "first_seen": "2026-10-25T16:22:19.450248+00:00",
-     "last_seen": "2026-11-14T10:29:41.493413+00:00",
+     "last_seen": "2026-11-14T17:07:58.517835+00:00",
      "label": ""
     },
     {
@@ -856,7 +837,7 @@
      "cpu_score": 6500,
      "baseline_price": null,
      "first_seen": "2026-09-10T08:47:57+02:00",
-     "last_seen": "2026-11-14T10:29:35.575322+00:00",
+     "last_seen": "2026-11-14T17:07:50.599227+00:00",
      "label": ""
     },
     {
@@ -871,11 +852,11 @@
      "source": "hardware-online-shop",
      "url": "https://www.hardware-online-shop.de/p/lenovo-thinkpad-t480s-14-0-i5-8350u-16-gb-256-gb-nvme",
      "title": "Lenovo ThinkPad T480s | 14\" | i5-8350U | 16 GB RAM | 256 GB SSD Mehrere Varianten vorhanden",
-     "published": "2026-11-14T10:29:40.580655+00:00",
+     "published": "2026-11-14T17:07:57.053401+00:00",
      "cpu_score": 6076,
      "baseline_price": null,
      "first_seen": "2026-11-05T20:40:07.939192+00:00",
-     "last_seen": "2026-11-14T10:29:40.607785+00:00",
+     "last_seen": "2026-11-14T17:07:57.093758+00:00",
      "label": ""
     },
     {
