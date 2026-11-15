@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-15 09:25 UTC, 267 Angebote in der Historie.
+Stand: 2026-11-15 17:10 UTC, 267 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
