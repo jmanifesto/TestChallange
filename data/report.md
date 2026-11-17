@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-16 20:29 UTC, 274 Angebote in der Historie.
+Stand: 2026-11-17 03:53 UTC, 274 Angebote in der Historie.
 
 ## Profil 'dev' (4 aktuelle Treffer)
 
@@ -9,17 +9,9 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
 | 749 € | 4.69 | ? | i7-12800H | 32/512 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/refurbished-gut-lenovo-thinkpad-p15v-gen-3-mobile-workstation-156-fhd-ips-i7-12800h-32gb-ddr5-ram-512gb-nvme-ssd-win11-pro-2865686) |
-| 905 € | 3.71 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
+| 904 € | 3.71 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
-
-## Neu in diesem Lauf (3)
-
-| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
-|---:|---:|---|---|---|---|---|---|
-| 180 € | 5.11 | X390 | i7-8565U | 16/512 GB | 13.3 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-x390-133-fhd-ips-i7-8565u-16gb-ram-512gb-ssd-lte-windows-11-refurbished-akzeptabel-layout-unklar-2872809) |
-| 188 € | - | E14 Gen 5 | Ryzen 3 7330U | 8/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-e14-gen-5-ryzen-3-7330u-14-wuxga-ips-8256gb-ohne-os-layout-international-klasse-b-mit-mogl-displaymangeln-2872801) |
-| 170 € | - | T495s | Ryzen 7 3700U | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/ggf-personalisiert-lenovo-thinkpad-t495s-14-fhd-ryzen-7-3700u-16gb-ram-128gb-ssd-win11-pro-refurbished-256gb-190eur-2872793) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
