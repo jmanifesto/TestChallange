@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-22 11:27 UTC, 302 Angebote in der Historie.
+Stand: 2026-11-22 19:39 UTC, 304 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -8,15 +8,16 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 913 € | 3.68 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
+| 895 € | 3.75 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (1)
+## Neu in diesem Lauf (2)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 249 € | 2.77 | T580 | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t580/de-34.514-c/) |
+| 309 € | 3.15 | L15 Gen 1 | i5-10210U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l15-gen-1/de-42.092-c/) |
+| 249 € | 2.77 | T590 | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t590/de-34.737-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
