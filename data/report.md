@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-22 03:14 UTC, 301 Angebote in der Historie.
+Stand: 2026-11-22 11:27 UTC, 302 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -11,6 +11,12 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 913 € | 3.68 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
+
+## Neu in diesem Lauf (1)
+
+| Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
+|---:|---:|---|---|---|---|---|---|
+| 249 € | 2.77 | T580 | i5-8350U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t580/de-34.514-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
@@ -40,7 +46,7 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 179 € | 4.47 | T580 | i5-8350U | 16/256 GB | 15.6 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t580-156-zoll-laptop-mit-windows-11-intel-i5-8350u-16gb-ddr4-ram-256gb-ssd-2x-usb-c-hdmi-refurbished-notebook-2858770) |
 | 379 € | 4.43 | T14 Gen 3 | i5-1235U | 16/512 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t14-gen-3-14-i5-1235u-16-gb-ram-512-gb-ssd-714193) |
 | 349 € | 4.43 | T14s Gen 1 | Ryzen 5 PRO 4650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-amd/de-43.539-b/) |
-| 299 € | 4.36 | L14 Gen 2 | i7-1165G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-l14-g2-14-laptop-ab-269eur-intel-i7-1165g7-16gb-ram-lte-256gb-m2-ssd-2x-usb-c-1x-tb4-lan-refurbished-lap-works-2829525) |
+| 439 € | 4.39 | T14s Gen 1 | Ryzen 7 PRO 4750U | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14s-gen-1-amd/de-51.369-b/) |
 
 ## Bis 250 € mit 16 GB
 
