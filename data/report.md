@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-23 00:52 UTC, 306 Angebote in der Historie.
+Stand: 2026-11-23 09:04 UTC, 307 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -12,12 +12,11 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (2)
+## Neu in diesem Lauf (1)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 149 € | 3.09 | ? | i5-7300U | 8/256 GB | 13.3 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-yoga-370-13-i5-7300u-8-gb-ram-256-gb-ssd) |
-| 549 € | - | P52 | i7-8750H | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p52/de-36.816-b/) |
+| 569 € | 2.03 | T14 Gen 2 | i5-1135G7 | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-2-intel/de-49.043-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
