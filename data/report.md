@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-26 15:14 UTC, 324 Angebote in der Historie.
+Stand: 2026-11-26 23:53 UTC, 329 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -8,21 +8,19 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 897 € | 3.74 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
+| 924 € | 3.64 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (7)
+## Neu in diesem Lauf (5)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 299 € | 3.53 | X13 Gen 2 | i5-1135G7 | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x13-gen-2/de-39.338-b/) |
-| 199 € | 3.18 | L13 Gen 1 | i5-10310U | 8/? GB | 13.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l13-gen1-i5-10310u-8-gb-256-gb-ssd) |
-| 399 € | 2.72 | T14 Gen 2 | i5-1135G7 | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-2-intel/de-38.976-b/) |
-| 379 € | 2.62 | X1 Yoga Gen 3 | i7-8650U | 16/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-x1-yoga-gen-3/de-39.882-b/) |
-| 349 € | 2.36 | T14 | i5-1145G7 | ?/? GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t14-gen-2i-14-0-i5-1145g-16-gb-gb-256-gb-nvme) |
-| 739 € | 2.05 | T15 Gen 2 | i5-1135G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-2/de-52.872-a/) |
-| 349 € | 1.57 | T14s Gen 1 | i7-10610U | ?/? GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t14s-gen-1-14-0-i7-10610u-16-gb-gb-256-gb-nvme) |
+| 279 € | 3.54 | L14 Gen 1 | i5-10210U | 16/256 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-l14-gen-1-14-i5-10210u-16-gb-ram-256-gb-nvme) |
+| 529 € | 3.37 | T14 Gen 3 | i5-1235U | 16/512 GB | 14.0 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-t14-gen-3-14-i5-1235u-16-gb-ram-512-gb-ssd-714307) |
+| 629 € | 2.35 | T15 Gen 2 | i5-1135G7 | 16/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t15-gen-2/de-52.872-c/) |
+| 339 € | 2.21 | L490 | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-l490/de-37.145-b/) |
+| 799 € | - | E14 Gen 5 | Ryzen 5 7430U | 40/500 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-e14-gen-5-amd/de-52.889-b/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
