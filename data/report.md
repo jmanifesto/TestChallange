@@ -1,6 +1,6 @@
 # ThinkPad-Deals Report
 
-Stand: 2026-11-27 08:31 UTC, 331 Angebote in der Historie.
+Stand: 2026-11-27 18:59 UTC, 332 Angebote in der Historie.
 
 ## Profil 'dev' (3 aktuelle Treffer)
 
@@ -8,16 +8,15 @@ Entwickler-Workstation: mehrere Agenten, IntelliJ, Docker, viele Browser-Tabs. M
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
+| 896 € | 3.74 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 879 € | 3.67 | P15 | i7-11850H | 32/1024 GB | 15.6 | hardware-online-shop | [Link](https://www.hardware-online-shop.de/p/lenovo-thinkpad-p15-gen-2i-15-6-i7-11850h-32-gb-ram-1024-gb-ssd) |
-| 924 € | 3.64 | T14 Gen 4 | Ryzen 7 PRO 7840U | 32/512 GB | 14.0 | refurbed | [Link](https://www.refurbed.de/p/lenovo-thinkpad-t14-g4-7-7840u/) |
 | 949 € | 2.99 | P16s Gen 1 | i7-1260P | 32/1000 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-p16s-g1/de-48.572-c/) |
 
-## Neu in diesem Lauf (2)
+## Neu in diesem Lauf (1)
 
 | Preis | Pkt/100€ | Modell | CPU | RAM/SSD | Zoll | Quelle | Link |
 |---:|---:|---|---|---|---|---|---|
-| 369 € | 3.62 | T14 Gen 2 | i5-1145G7 | 16/256 GB | 14.0 | mydealz | [Link](https://www.mydealz.de/deals/lenovo-thinkpad-t14-gen-2-refurbished-gut-14-fhd-i5-1145g7-16gb-ram-256gb-ssd-win11-pro-fur-369eur-inkl-versand-lap-works-2883346) |
-| 479 € | 2.35 | T14 Gen 2 | i5-1135G7 | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t14-gen-2-intel/de-44.696-b/) |
+| 219 € | 3.03 | T490 | i5-8265U | 8/250 GB |  | afb | [Link](https://www.afbshop.de/lenovo-thinkpad-t490/de-33.348-c/) |
 
 ## Beste Preis-Leistung (letzte 14 Tage)
 
